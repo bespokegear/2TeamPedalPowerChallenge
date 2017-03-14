@@ -1,0 +1,54 @@
+Two Team Challenge
+
+- Pedal powered challenge game
+- Has two "teams", consisting of a pair of players per team
+  - Adult player with one load
+  - Child player with different load
+  - Each has separate analog input voltage
+  - Power / energy for team == adult value + chld value
+  - Each team has an LED display output
+  - Analog inputs:
+    - 330 KOhm / 10 KOhm potential divider
+    - Team 1, Adult on A0 - 4.4 Ohm load (P = V*V / 4.4)
+    - Team 1, Child on A1 - 6.6 Ohm load (P = V*V / 6.6)
+    - Team 2, Adult on A2 - 4.4 Ohm load (P = V*V / 4.4)
+    - Team 2, Child on A3 - 6.6 Ohm load (P = V*V / 6.6)
+- System has matrix display controlled via a serial command language
+- System has mode selection switches SWA & SWB which sets mode (see below)
+- System has input buttons for game control
+  - Two inputs per button (wired and radio remote) - use DualButton for this
+- System has internal voltage value which may be used for brownout handling
+  - on input A6, potential divider 100 KOhm / 10 KOhm
+
+- Three game modes:
+  - Mode 1: energy race.  
+    - Each iteration, energy is calculated and added to a total
+    - Game is over when one team reaches a target amount of energy
+    - LED displays show amount of energy as bar graph.
+      - With few bars lit, the colour is blue
+      - As energy approaches target, all coloured cells get painted progressively more red
+    - Winner flashes, loser dims
+    - Some sort of message on matrix display
+  - Mode 2: timed max power
+    - Game runs for some fixed time
+    - Winner is the tesm that has the highest peak power output within the game time
+    - Countdown before starting on matrix display
+    - LED displays show instantaneous power for team
+  - Mode 3: timed accumulated energy
+    - Fixed duration of game
+    - Energy calculated and added to total
+    - LED show accumulated energy since start of game
+    - Winner is team with highest accumulated energy at end of game time
+    - Countdown before starting on matrix display
+
+Priority functionality:
+- Input teams (two physical inputs to one logical team)
+- Init LED displays with different pixel orders
+- Ready buttons & radio buttons
+- Switch mode based on SWa, SWb
+- Implement Mode 1
+
+Lower priority
+- Modes 2 & 3
+- LED matrix output
+
