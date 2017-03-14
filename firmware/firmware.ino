@@ -6,6 +6,8 @@
 #include "Config.h"
 #include "SWA.h"
 #include "SWB.h"
+#include "SWRed.h"
+#include "SWGreen.h"
 
 void setup()
 {
@@ -15,17 +17,22 @@ void setup()
     Heartbeat.begin();
     SWA.begin();
     SWB.begin();
+    SWRed.begin();
+    SWGreen.begin();
 }
 
 void loop()
 {
+    Heartbeat.update();
     SWA.update();
     SWB.update();
-    DB(F("SWAB12:"));
+    SWRed.update();
+    SWGreen.update();
+    DB(F("SWABRG:"));
     DB(SWA.on());
-    DBLN(SWB.on());
-    //DBLN(SW1.on());
-    //DBLN(SW2.on());
+    DB(SWB.on());
+    DB(SWRed.on());
+    DBLN(SWGreen.on());
 }
 
 
