@@ -9,6 +9,7 @@
 #include "SWRed.h"
 #include "SWGreen.h"
 #include "Team1.h"
+#include "Team2.h"
 
 void setup()
 {
@@ -24,6 +25,7 @@ void setup()
     SWRed.begin();
     SWGreen.begin();
     Team1.begin();
+    Team2.begin();
 
 }
 
@@ -35,6 +37,7 @@ void loop()
     SWRed.update();
     SWGreen.update();
     Team1.update();
+    Team2.update();
 
     if (SWRed.tapped()) {
         DBLN(F("RESET ENERGY"));
@@ -49,7 +52,11 @@ void loop()
     DB(F(" Team1 P="));
     DB(Team1.watts());
     DB(F(" E="));
-    DBLN(Team1.joules());
+    DB(Team1.joules());
+    DB(F(" Team2 P="));
+    DB(Team2.watts());
+    DB(F(" E="));
+    DBLN(Team2.joules());
 }
 
 

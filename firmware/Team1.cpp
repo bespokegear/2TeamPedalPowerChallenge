@@ -1,4 +1,5 @@
 #include "Team1.h"
+#include "Config.h"
 
-Team Team1(A0, A1);
+Team Team1(TEAM1_ADULT_PIN, TEAM1_CHILD_PIN);
 
