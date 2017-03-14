@@ -10,6 +10,18 @@
 #include "SWGreen.h"
 #include "Team1.h"
 #include "Team2.h"
+#include "EmptyMode.h"
+
+Mode* mode = NULL;
+
+void switchMode(Mode* newMode)
+{
+    if (mode != NULL) {
+        mode->stop();
+    }
+    mode = newMode;
+    mode->start();
+}
 
 void setup()
 {
@@ -27,6 +39,7 @@ void setup()
     Team1.begin();
     Team2.begin();
 
+    switchMode(&EmptyMode);
 }
 
 void loop()
@@ -38,6 +51,7 @@ void loop()
     SWGreen.update();
     Team1.update();
     Team2.update();
+    mode->update();
 
     if (SWRed.tapped()) {
         DBLN(F("RESET ENERGY"));
