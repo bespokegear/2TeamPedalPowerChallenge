@@ -50,8 +50,8 @@ void Player::update()
 {
     if (_periodMs == 0 || millis() >= _lastUpdated + _periodMs || _lastUpdated == 0) {
         _lastSample = analogRead(_pin);
-        DB(F("Player::update sample="));
-        DBLN(_lastSample);
+        //DB(F("Player::update sample="));
+        //DBLN(_lastSample);
         _movingAverage = (_alpha*_lastSample) + ((1-_alpha)*_movingAverage);
         _lastUpdated = millis();
         _joules += (averageWatts() * _periodMs) / 1000.;
