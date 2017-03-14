@@ -8,9 +8,7 @@
 #include "SWB.h"
 #include "SWRed.h"
 #include "SWGreen.h"
-#include "Player.h"
-
-Player Team1Adult(A0, 4.4);
+#include "Team1.h"
 
 void setup()
 {
@@ -25,7 +23,7 @@ void setup()
     SWB.begin();
     SWRed.begin();
     SWGreen.begin();
-    Team1Adult.begin();
+    Team1.begin();
 
 }
 
@@ -36,19 +34,22 @@ void loop()
     SWB.update();
     SWRed.update();
     SWGreen.update();
-    Team1Adult.update();
+    Team1.update();
+
+    if (SWRed.tapped()) {
+        DBLN(F("RESET ENERGY"));
+        Team1.reset();
+    }
 
     DB(F("SWABRG:"));
     DB(SWA.on());
     DB(SWB.on());
     DB(SWRed.on());
     DB(SWGreen.on());
-    DB(F(" T1A v="));
-    DB(Team1Adult.averageVolts());
-    DB(F(" T1A p="));
-    DB(Team1Adult.averageWatts());
-    DB(F(" T1A j="));
-    DBLN(Team1Adult.joules());
+    DB(F(" Team1 P="));
+    DB(Team1.watts());
+    DB(F(" E="));
+    DBLN(Team1.joules());
 }
 
 

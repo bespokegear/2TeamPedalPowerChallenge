@@ -16,4 +16,6 @@
 #define PLAYER_VIN_PERIOD_MS        20
 #define PLAYER_VIN_ALPHA            0.9
 #define PLAYER_VIN_FACTOR           1.25
+#define PLAYER_ADULT_LOAD_OHM       4.4
+#define PLAYER_CHILD_LOAD_OHM       6.6
 
