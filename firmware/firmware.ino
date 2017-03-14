@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <Mutila.h>
 #include <MutilaDebug.h>
+#include <stdint.h>
 
 #include "Heartbeat.h"
 #include "Config.h"
@@ -12,6 +13,8 @@
 #include "Team2.h"
 #include "EmptyMode.h"
 
+int8_t modeIdx = -1;
+Mode* modes[] = { &EmptyMode, &EmptyMode, &EmptyMode, &EmptyMode };
 Mode* mode = NULL;
 
 void switchMode(Mode* newMode)
@@ -21,6 +24,17 @@ void switchMode(Mode* newMode)
     }
     mode = newMode;
     mode->start();
+}
+
+void modeCheck()
+{
+    uint8_t idx = (SWB.on() << 1) + SWA.on();
+    if (idx != modeIdx) {
+        modeIdx = idx;
+        DB(F("Switch mode IDX="));
+        DBLN(modeIdx);
+        switchMode(modes[modeIdx]);
+    }
 }
 
 void setup()
@@ -39,7 +53,7 @@ void setup()
     Team1.begin();
     Team2.begin();
 
-    switchMode(&EmptyMode);
+    modeCheck();
 }
 
 void loop()
@@ -58,6 +72,8 @@ void loop()
         Team1.reset();
     }
 
+    modeCheck();
+    return;
     DB(F("SWABRG:"));
     DB(SWA.on());
     DB(SWB.on());
