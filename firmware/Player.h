@@ -17,13 +17,18 @@
 class Player : public EMAVDivSampler {
 public:
     Player(const uint8_t pin, const float loadOhms);
+    void begin();
     float averageVolts();
     float lastVolts();
     float averageWatts();
     float lastWatts();
+    void resetJoules();
+    float joules();
+    void update();
 
 private:
     float _loadOhms;
-    
+    float _joules;
+
 };
 
