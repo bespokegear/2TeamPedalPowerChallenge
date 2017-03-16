@@ -3,13 +3,14 @@
 #include <Mode.h>
 #include <stdint.h>
 
-class EnergyFillWaitMode_ : public Mode {
+class EnergyFillCountdownMode_ : public Mode {
 public:
-    EnergyFillWaitMode_();
+    EnergyFillCountdownMode_();
     void begin();
     void modeStart();
     void modeStop();
-    void modeUpdate() {;}
+    void modeUpdate();
+    void setCount(uint8_t c);
     bool isFinished();
 
 private:
@@ -19,4 +20,4 @@ private:
 
 };
 
-extern EnergyFillWaitMode_ EnergyFillWaitMode;
+extern EnergyFillCountdownMode_ EnergyFillCountdownMode;

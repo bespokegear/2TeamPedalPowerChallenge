@@ -76,11 +76,6 @@ void loop()
     Team2.update();
     mode->update();
 
-    if (SWRed.tapped()) {
-        DBLN(F("RESET ENERGY"));
-        Team1.reset();
-    }
-
     modeCheck();
     return;
     DB(F("SWABRG:"));

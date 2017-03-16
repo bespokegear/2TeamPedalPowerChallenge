@@ -33,12 +33,14 @@ void EnergyFillRaceMode_::modeStart()
 void EnergyFillRaceMode_::modeStop()
 {
     DBLN(F("EnergyFillRaceMode::stop()"));
+    Team1.setFreeze(true);
+    Team2.setFreeze(true);
 }
 
 void EnergyFillRaceMode_::modeUpdate()
 {
     if (SWRed.tapped()) {
-        //raceOver = true;
+        raceOver = true;
     }
 
     if (Team1.joules() >= ENERGY_FILL_GOAL_JOULES || 

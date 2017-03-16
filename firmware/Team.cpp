@@ -19,7 +19,7 @@ void Team::update()
     _childPlayer.update();
 }
 
-//! Reset Joules
+//! Reset Joules & unfreeze
 void Team::reset()
 {
     _adultPlayer.resetJoules();
@@ -38,4 +38,9 @@ float Team::joules()
     return _adultPlayer.joules() + _childPlayer.joules();
 }
 
+void Team::setFreeze(bool b)
+{
+    _adultPlayer.setFreeze(b);
+    _childPlayer.setFreeze(b);
+}
 

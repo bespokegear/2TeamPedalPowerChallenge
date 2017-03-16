@@ -10,7 +10,7 @@ public:
     void begin();
     void update();
 
-    //! Reset Joules
+    //! Reset Joules (also unfreezes player stats)
     void reset();
 
     //! Get Instantaneous Power in Watts
@@ -18,6 +18,9 @@ public:
 
     //! Get Energy in joules since last reset
     float joules();
+
+    //! Freeze or unfreeze player stats
+    void setFreeze(bool b);
 
 private:
     Player _adultPlayer;

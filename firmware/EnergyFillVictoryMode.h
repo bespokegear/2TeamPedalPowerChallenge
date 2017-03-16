@@ -3,20 +3,20 @@
 #include <Mode.h>
 #include <stdint.h>
 
-class EnergyFillWaitMode_ : public Mode {
+class EnergyFillVictoryMode_ : public Mode {
 public:
-    EnergyFillWaitMode_();
+    EnergyFillVictoryMode_();
     void begin();
     void modeStart();
     void modeStop();
-    void modeUpdate() {;}
+    void modeUpdate();
     bool isFinished();
 
 private:
     bool counting;
     uint8_t count;
-    unsigned long lastUpdate;
+    unsigned long startMillis;
 
 };
 
-extern EnergyFillWaitMode_ EnergyFillWaitMode;
+extern EnergyFillVictoryMode_ EnergyFillVictoryMode;

@@ -1,7 +1,9 @@
 #include <MutilaDebug.h>
 #include "EnergyFillMode.h"
 #include "EnergyFillWaitMode.h"
+#include "EnergyFillCountdownMode.h"
 #include "EnergyFillRaceMode.h"
+#include "EnergyFillVictoryMode.h"
 
 EnergyFillMode_ EnergyFillMode;
 
@@ -13,6 +15,9 @@ void EnergyFillMode_::begin()
 {
     DBLN(F("EnergyFillMode::begin()"));
     EnergyFillWaitMode.begin();
+    EnergyFillCountdownMode.begin();
+    EnergyFillRaceMode.begin();
+    EnergyFillVictoryMode.begin();
 }
 
 void EnergyFillMode_::modeStart()
@@ -31,16 +36,17 @@ void EnergyFillMode_::modeUpdate()
 {
     if (mode->isFinished()) {
         if (mode == &EnergyFillWaitMode) {
-            DBLN(F("End Count"));
+            switchMode(&EnergyFillCountdownMode);
+        } else if (mode == &EnergyFillCountdownMode) {
             switchMode(&EnergyFillRaceMode);
         } else if (mode == &EnergyFillRaceMode) {
-            DBLN(F("End Race"));
+            switchMode(&EnergyFillVictoryMode);
+        } else {
             switchMode(&EnergyFillWaitMode);
         }
+    } else {
+        mode->update();
     }
-
-    // calls mode->update as long as mode isn't NULL
-    mode->update();
 }
 
 
