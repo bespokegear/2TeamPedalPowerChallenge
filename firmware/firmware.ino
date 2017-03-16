@@ -11,10 +11,12 @@
 #include "SWGreen.h"
 #include "Team1.h"
 #include "Team2.h"
+#include "EnergyFillMode.h"
 #include "EmptyMode.h"
+#include "Display.h"
 
 int8_t modeIdx = -1;
-Mode* modes[] = { &EmptyMode, &EmptyMode, &EmptyMode, &EmptyMode };
+Mode* modes[] = { &EnergyFillMode, &EmptyMode, &EmptyMode, &EmptyMode };
 Mode* mode = NULL;
 
 void switchMode(Mode* newMode)
@@ -52,7 +54,14 @@ void setup()
     SWGreen.begin();
     Team1.begin();
     Team2.begin();
+    Display.begin();
 
+    // Init modes.  Modes with child modes are responsible for calling
+    // begin() for their children
+    EmptyMode.begin();
+    EnergyFillMode.begin();
+
+    // Set the mode based on the position of SWA and SWB
     modeCheck();
 }
 

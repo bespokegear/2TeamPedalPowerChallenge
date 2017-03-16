@@ -24,3 +24,8 @@
 #define TEAM2_ADULT_PIN             A2
 #define TEAM2_CHILD_PIN             A3
 
+#define COUNTDOWN_START             3
+
+#define ENERGY_FILL_LED_UPDATE_MS   500
+#define ENERGY_FILL_GOAL_JOULES     500
+
