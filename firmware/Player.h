@@ -25,10 +25,12 @@ public:
     void resetJoules();
     float joules();
     void update();
+    void setFreeze(bool b);
 
 private:
     float _loadOhms;
     float _joules;
+    bool _frozen;
 
 };
 
