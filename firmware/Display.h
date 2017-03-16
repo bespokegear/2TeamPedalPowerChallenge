@@ -13,6 +13,8 @@ public:
     void countdown(uint8_t n);
     //! with NULL terminated string
     void say(const char* str);
+    //! say who won. if n == 0 it means a tie
+    void winner(uint8_t n);
 
 };
 

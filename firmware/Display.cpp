@@ -25,3 +25,9 @@ void Display_::say(const char* str)
     DBLN(str);
 }
 
+void Display_::winner(uint8_t n)
+{
+    DB(F("DISPLAY [winner]: "));
+    DBLN(n);
+}
+
