@@ -4,6 +4,8 @@
 #include "SWRed.h"
 #include "Config.h"
 #include "CorrectedMillis.h"
+#include "LED1.h"
+#include "LED2.h"
 
 EnergyFillCountdownMode_ EnergyFillCountdownMode;
 
@@ -20,6 +22,8 @@ void EnergyFillCountdownMode_::modeStart()
 {
     DBLN(F("EnergyFillCountdownMode::start()"));
     setCount(COUNTDOWN_START);
+    LED1.clear();
+    LED2.clear();
 }
 
 void EnergyFillCountdownMode_::modeStop()
