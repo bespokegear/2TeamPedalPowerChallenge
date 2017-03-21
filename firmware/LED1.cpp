@@ -1,0 +1,4 @@
+#include "LED1.h"
+
+RIBargraphDisplay LED1(LED1_NEOPIXEL_TYPE, LED1_NUM_PANELS, LED1_DATA_PIN);
+

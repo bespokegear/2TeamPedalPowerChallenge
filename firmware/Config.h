@@ -1,6 +1,14 @@
 #pragma once
 
 #include <Arduino.h>
+#include <Adafruit_NeoPixel.h>
+
+#define LED1_NUM_PANELS             2
+#define LED1_DATA_PIN               5
+#define LED1_NEOPIXEL_TYPE          (NEO_RGB + NEO_KHZ800)
+#define LED2_NUM_PANELS             2
+#define LED2_DATA_PIN               6
+#define LED2_NEOPIXEL_TYPE          (NEO_RBG + NEO_KHZ800)
 
 #define HEARTBEAT_LED_PIN           13
 #define SWA_PIN                     4

@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <Mutila.h>
 #include <MutilaDebug.h>
+#include <Adafruit_NeoPixel.h>
 #include <stdint.h>
 
 #include "Heartbeat.h"
@@ -14,6 +15,8 @@
 #include "EnergyFillMode.h"
 #include "EmptyMode.h"
 #include "Display.h"
+#include "LED1.h"
+#include "LED2.h"
 
 int8_t modeIdx = -1;
 Mode* modes[] = { &EnergyFillMode, &EmptyMode, &EmptyMode, &EmptyMode };
@@ -55,6 +58,10 @@ void setup()
     Team1.begin();
     Team2.begin();
     Display.begin();
+    LED1.begin();
+    LED2.begin();
+    LED1.clear();
+    LED2.clear();
 
     // Init modes.  Modes with child modes are responsible for calling
     // begin() for their children
