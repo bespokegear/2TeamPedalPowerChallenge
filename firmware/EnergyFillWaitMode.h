@@ -9,13 +9,11 @@ public:
     void begin();
     void modeStart();
     void modeStop();
-    void modeUpdate() {;}
+    void modeUpdate();
     bool isFinished();
 
 private:
-    bool counting;
-    uint8_t count;
-    unsigned long lastUpdate;
+    unsigned long clearTime;
 
 };
 

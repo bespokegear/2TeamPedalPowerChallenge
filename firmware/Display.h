@@ -9,6 +9,8 @@ class Display_ {
 public:
     Display_() {;}
     void begin();
+    //! Clear display
+    void clear();
     //! Display a number, 0 displays "Go!"
     void countdown(uint8_t n);
     //! with NULL terminated string

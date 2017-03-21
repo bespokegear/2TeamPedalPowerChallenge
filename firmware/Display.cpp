@@ -8,7 +8,13 @@ Display_ Display;
 
 void Display_::begin()
 {
-    DBLN(F("Display_.begin()"));
+    DBLN(F("Display.begin()"));
+}
+
+void Display_::clear()
+{
+    DBLN(F("Display.clear()"));
+    Serial.println(F("aAACL-------"));
 }
 
 void Display_::countdown(uint8_t n)
