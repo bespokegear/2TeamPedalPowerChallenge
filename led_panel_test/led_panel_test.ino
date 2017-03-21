@@ -1,37 +1,31 @@
 #include <Arduino.h>
 #include <Adafruit_NeoPixel.h>
+#include <MutilaDebug.h>
 #include "Config.h"
-#include "LEDPanel1.h"
-#include "LEDPanel2.h"
+#include "RIBargraphDisplay.h"
 
-void display(const char* name, int r, int g, int b)
-{
-    Serial.println(name);
-    for(int i=0; i<LED1_NUM_LEDS; i++) {
-        LEDPanel1.setPixelColor(i, r, g, b);
-        LEDPanel2.setPixelColor(i, r, g, b);
-    }
-    LEDPanel1.show();
-    LEDPanel2.show();
-    delay(1000);
-}
+RIBargraphDisplay Bar1(LED1_NEOPIXEL_TYPE, 2, LED1_DATA_PIN);
+RIBargraphDisplay Bar2(LED2_NEOPIXEL_TYPE, 2, LED2_DATA_PIN);
+unsigned long lastReset = 0;
 
 void setup()
 {
     Serial.begin(115200);
     delay(300);
-    LEDPanel1.begin();
-    LEDPanel1.clear();
-    LEDPanel1.show();
-    LEDPanel2.begin();
-    LEDPanel2.clear();
-    LEDPanel2.show();
+    Bar1.begin();
+    Bar2.begin();
+    DB("number of rows=");
+    DBLN(Bar1.numRows());
 }
 
 void loop()
 {
-    display("red", 100, 0, 0);
-    display("green", 0, 100, 0);
-    display("blue", 0, 0, 100);
-    delay(2500);
+    if (millis() > lastReset + 1000) {
+        Bar1.clearPeak();
+        Bar2.clearPeak();
+        lastReset = millis();
+    }
+    Bar1.graph(random() % Bar1.numRows(), 0x660066UL, true, 0x888888UL);
+    Bar2.graph(random() % Bar2.numRows(), 0x004400UL, true, 0x888888UL);
+    delay(100);
 }
