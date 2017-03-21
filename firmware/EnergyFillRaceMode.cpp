@@ -101,7 +101,7 @@ void EnergyFillRaceMode_::updateLEDs()
     DB(F("% t2="));
     DB(t2Complete*100);
     DBLN('%');
-    LED1.graph(LED1.numRows()*t1Complete, getColor(t1Complete), false);
-    LED2.graph(LED2.numRows()*t2Complete, getColor(t2Complete), false);
+    LED1.graph(t1Complete < 0.001 ? 0 : LED1.numRows()*t1Complete, getColor(t1Complete), false);
+    LED2.graph(t2Complete < 0.001 ? 0 : LED2.numRows()*t2Complete, getColor(t2Complete), false);
 }
 

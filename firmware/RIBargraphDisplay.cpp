@@ -82,5 +82,10 @@ void RIBargraphDisplay::clearPeak()
     peakRow = 0;
 }
 
+void RIBargraphDisplay::setBrightness(uint8_t b)
+{
+    LEDs.setBrightness(b);
+    LEDs.show();
+}
 
 

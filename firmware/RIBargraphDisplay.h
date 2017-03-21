@@ -19,6 +19,7 @@ public:
     void graph(uint16_t n, uint32_t barColor, bool peak, uint32_t peakColor=0);
     uint16_t getPeak();
     void clearPeak();
+    void setBrightness(uint8_t b);
 
 private:
     Adafruit_NeoPixel LEDs;

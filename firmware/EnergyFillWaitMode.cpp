@@ -30,6 +30,8 @@ void EnergyFillWaitMode_::modeStart()
 void EnergyFillWaitMode_::modeStop()
 {
     DBLN(F("EnergyFillWaitMode::stop()"));
+    LED1.setBrightness(255);
+    LED2.setBrightness(255);
 }
 
 void EnergyFillWaitMode_::modeUpdate()
