@@ -34,6 +34,8 @@ void Display_::say(const char* str)
 {
     DB(F("DISPLAY [str - TODO]: "));
     DBLN(str);
+    Serial.print("aAAST");
+    Serial.println(str);
 }
 
 void Display_::countdown(uint16_t tenthsSec)

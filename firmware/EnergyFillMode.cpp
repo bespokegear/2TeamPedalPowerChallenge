@@ -4,6 +4,8 @@
 #include "EnergyFillCountdownMode.h"
 #include "EnergyFillRaceMode.h"
 #include "EnergyFillVictoryMode.h"
+#include "SWRed.h"
+#include "SWGreen.h"
 
 EnergyFillMode_ EnergyFillMode;
 

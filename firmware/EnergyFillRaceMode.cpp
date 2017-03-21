@@ -8,6 +8,7 @@
 #include "Team2.h"
 #include "LED1.h"
 #include "LED2.h"
+#include "Settings.h"
 
 EnergyFillRaceMode_ EnergyFillRaceMode;
 
@@ -45,8 +46,8 @@ void EnergyFillRaceMode_::modeUpdate()
         raceOver = true;
     }
 
-    if (Team1.joules() >= ENERGY_FILL_GOAL_JOULES || 
-        Team2.joules() >= ENERGY_FILL_GOAL_JOULES) {
+    if (Team1.joules() >= EnergyRaceGoalJoules.get() || 
+        Team2.joules() >= EnergyRaceGoalJoules.get()) {
         raceOver = true;
     }
 
@@ -94,8 +95,8 @@ void EnergyFillRaceMode_::updateLEDs()
 {
     DB(F("updateLEDs t1="));
     // Expressed as 0.0 - 1.0
-    float t1Complete = Team1.joules() / ENERGY_FILL_GOAL_JOULES;
-    float t2Complete = Team2.joules() / ENERGY_FILL_GOAL_JOULES;
+    float t1Complete = Team1.joules() / EnergyRaceGoalJoules.get();
+    float t2Complete = Team2.joules() / EnergyRaceGoalJoules.get();
     DB(t1Complete*100);
     DB(F("% t2="));
     DB(t2Complete*100);

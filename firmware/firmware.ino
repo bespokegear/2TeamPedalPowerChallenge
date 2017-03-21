@@ -13,13 +13,14 @@
 #include "Team1.h"
 #include "Team2.h"
 #include "EnergyFillMode.h"
+#include "SettingsMode.h"
 #include "EmptyMode.h"
 #include "Display.h"
 #include "LED1.h"
 #include "LED2.h"
 
 int8_t modeIdx = -1;
-Mode* modes[] = { &EnergyFillMode, &EmptyMode, &EmptyMode, &EmptyMode };
+Mode* modes[] = { &EnergyFillMode, &EmptyMode, &EmptyMode, &SettingsMode };
 Mode* mode = NULL;
 
 void switchMode(Mode* newMode)
@@ -67,6 +68,7 @@ void setup()
     // begin() for their children
     EmptyMode.begin();
     EnergyFillMode.begin();
+    SettingsMode.begin();
 
     // Set the mode based on the position of SWA and SWB
     modeCheck();

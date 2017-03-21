@@ -33,6 +33,7 @@ void EnergyFillWaitMode_::modeUpdate()
 {
     if (clearTime > 0 && millis() >= clearTime) {
         Display.clear();
+        Display.say("Energy Mode");
         clearTime = 0;
     }
 }

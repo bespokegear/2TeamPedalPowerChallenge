@@ -22,6 +22,10 @@ void EnergyFillVictoryMode_::begin()
 void EnergyFillVictoryMode_::modeStart()
 {
     DBLN(F("EnergyFillVictoryMode::start()"));
+    DB(F("Energy T1="));
+    DB(Team1.joules());
+    DB(F(" T2="));
+    DBLN(Team2.joules());
     startMillis = millis();
     if (Team1.joules() > Team2.joules()) {
         Display.winner(1);
@@ -41,10 +45,6 @@ void EnergyFillVictoryMode_::modeStop()
 void EnergyFillVictoryMode_::modeUpdate()
 {
     // TODO: animate victory
-    DB(F("Energy Victory T1="));
-    DB(Team1.joules());
-    DB(F(" T2="));
-    DBLN(Team2.joules());
 }
 
 bool EnergyFillVictoryMode_::isFinished()
