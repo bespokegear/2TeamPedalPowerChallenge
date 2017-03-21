@@ -25,6 +25,9 @@ Mode* mode = NULL;
 
 void switchMode(Mode* newMode)
 {
+    // Clear buttons
+    SWRed.tapped();
+    SWGreen.tapped();
     if (mode != NULL) {
         mode->stop();
     }

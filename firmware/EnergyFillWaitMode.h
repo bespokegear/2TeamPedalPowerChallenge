@@ -13,7 +13,8 @@ public:
     bool isFinished();
 
 private:
-    unsigned long clearTime;
+    int16_t wipeRow;
+    unsigned long lastWipe;
 
 };
 

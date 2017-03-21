@@ -2,7 +2,20 @@
 #include <MutilaDebug.h>
 #include "Display.h"
 
-char buf[13];
+char buf[18];
+
+void clearBuf()
+{
+    memset(buf, 0, 18);
+}
+
+void sendBuf(uint8_t len, char pad)
+{
+    for(uint8_t i=len; i<18; i++) {
+        buf[i] = pad;
+    }
+    Serial.println(buf);
+}
 
 Display_ Display;
 
@@ -14,7 +27,9 @@ void Display_::begin()
 void Display_::clear()
 {
     DBLN(F("Display.clear()"));
-    Serial.println(F("aAACL-------"));
+    clearBuf();
+    snprintf(buf, 12, "aAACL");
+    sendBuf(12, '-');
 }
 
 void Display_::countdown(uint8_t n)
@@ -25,34 +40,36 @@ void Display_::countdown(uint8_t n)
     } else {
         DBLN(F("DISPLAY [countdown]: GO!"));
     }
-    memset(buf,0,13);   
-    snprintf(buf, 12, "aAACD%d------", n);
-    Serial.println(buf);
+    clearBuf();
+    snprintf(buf, 12, "aAACD%d", n);
+    sendBuf(12, '-');
 }
 
 void Display_::say(const char* str)
 {
     DB(F("DISPLAY [str - TODO]: "));
     DBLN(str);
-    Serial.print("aAAST");
-    Serial.println(str);
+    snprintf(buf, 17, "aAAST%s", str);
+    clearBuf();
+    snprintf(buf, 17, "aAAST%s", str);
+    sendBuf(17, '#');
 }
 
 void Display_::countdown(uint16_t tenthsSec)
 {
     DB(F("DISPLAY [countdown]: "));
     DBLN(tenthsSec);
-    memset(buf,0,13);   
-    snprintf(buf, 12, "aAACD%04d---", tenthsSec);
-    Serial.println(buf);
+    clearBuf();
+    snprintf(buf, 12, "aAACD%04d", tenthsSec);
+    sendBuf(12, '-');
 }
 
 void Display_::winner(uint8_t n)
 {
     DB(F("DISPLAY [winner]: "));
     DBLN(n);
-    memset(buf,0,13);   
-    snprintf(buf, 12, "aAAWN%d------", n);
-    Serial.println(buf);
+    clearBuf();
+    snprintf(buf, 12, "aAAWN%d", n);
+    sendBuf(12, '-');
 }
 

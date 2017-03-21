@@ -4,6 +4,8 @@
 #include "SWRed.h"
 #include "Config.h"
 #include "CorrectedMillis.h"
+#include "LED1.h"
+#include "LED2.h"
 #include "Display.h"
 
 EnergyFillWaitMode_ EnergyFillWaitMode;
@@ -20,8 +22,9 @@ void EnergyFillWaitMode_::begin()
 void EnergyFillWaitMode_::modeStart()
 {
     DBLN(F("EnergyFillWaitMode::start()"));
-    Display.say("Hai!");
-    clearTime = millis() + 1500;
+    wipeRow = LED1.numRows();
+    lastWipe = millis();
+    Display.say("Energy Mode");
 }
 
 void EnergyFillWaitMode_::modeStop()
@@ -31,10 +34,11 @@ void EnergyFillWaitMode_::modeStop()
 
 void EnergyFillWaitMode_::modeUpdate()
 {
-    if (clearTime > 0 && millis() >= clearTime) {
-        Display.clear();
-        Display.say("Energy Mode");
-        clearTime = 0;
+    if (millis() >= lastWipe + 35 && wipeRow >= 0) {
+        LED1.setRowColor(wipeRow, 0);
+        LED2.setRowColor(wipeRow, 0);
+        lastWipe = millis();
+        wipeRow--;
     }
 }
 

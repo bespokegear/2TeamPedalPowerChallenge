@@ -65,7 +65,7 @@ void SettingsMode_::display()
     memset(buf,0,13);
     switch(_idx) {
     case 0:
-        snprintf(buf, 12, "MaxE=%ldJ", EnergyRaceGoalJoules.get());
+        snprintf(buf, 12, "MaxE=%dkJ", EnergyRaceGoalJoules.get()/1000);
         Display.say(buf);
         break;
     case 1:
