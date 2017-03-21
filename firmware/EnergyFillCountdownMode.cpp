@@ -4,6 +4,8 @@
 #include "SWRed.h"
 #include "Config.h"
 #include "CorrectedMillis.h"
+#include "LED1.h"
+#include "LED2.h"
 
 EnergyFillCountdownMode_ EnergyFillCountdownMode;
 
@@ -20,6 +22,8 @@ void EnergyFillCountdownMode_::modeStart()
 {
     DBLN(F("EnergyFillCountdownMode::start()"));
     setCount(COUNTDOWN_START);
+    wipeRow = LED1.numRows();
+    lastWipe = millis();
 }
 
 void EnergyFillCountdownMode_::modeStop()
@@ -34,17 +38,22 @@ void EnergyFillCountdownMode_::modeUpdate()
         return;
     }
 
-    if (millis() > lastUpdate + 1000 && count > 0) {
+    if (millis() > lastCount + 1000 && count > 0) {
         setCount(count - 1);
     }
 
-    // TODO: clear LED displays
+    if (millis() >= lastWipe + 35 && wipeRow >= 0) {
+        LED1.setRowColor(wipeRow, 0);
+        LED2.setRowColor(wipeRow, 0);
+        lastWipe = millis();
+        wipeRow--;
+    }
 }
 
 void EnergyFillCountdownMode_::setCount(uint8_t c)
 {
     count = c;
-    lastUpdate = millis();
+    lastCount = millis();
     Display.countdown(c);
 }
 

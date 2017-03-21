@@ -16,7 +16,9 @@ public:
 private:
     bool counting;
     uint8_t count;
-    unsigned long lastUpdate;
+    int16_t wipeRow;
+    unsigned long lastCount;
+    unsigned long lastWipe;
 
 };
 
