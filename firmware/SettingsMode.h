@@ -3,7 +3,7 @@
 #include <Mode.h>
 #include "Settings.h"
 
-#define SETTINGS_COUNT 3
+#define SETTINGS_COUNT 4
 
 class SettingsMode_ : public Mode {
 public:

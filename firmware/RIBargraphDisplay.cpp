@@ -2,17 +2,33 @@
 #include <Millis.h>
 #include "RIBargraphDisplay.h"
 #include "Config.h"
+#include "Settings.h"
 
-RIBargraphDisplay::RIBargraphDisplay(neoPixelType LEDType, uint8_t dataPin, uint8_t numPanels) :
-    Adafruit_NeoPixel(numPanels*60, dataPin, LEDType)
+RIBargraphDisplay::RIBargraphDisplay(neoPixelType LEDType, uint8_t dataPin) :
+    _type(LEDType),
+    _pin(dataPin)
 {
 }
 
 void RIBargraphDisplay::begin()
 {
     Adafruit_NeoPixel::begin();
+    updateType(_type);
+    setPin(_pin);
+    setNumberPanels(PanelsPerBargraph.get());
     clear(true);
     clearPeak();
+}
+
+void RIBargraphDisplay::setNumberPanels(uint8_t panels)
+{
+    clear(true);
+    updateLength(panels*60);
+    clear(true);
+    DB(F("Panels="));
+    DB(panels);
+    DB(F(" rows="));
+    DBLN(numRows());
 }
 
 void RIBargraphDisplay::clear(bool immediate)

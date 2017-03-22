@@ -19,7 +19,11 @@ public:
     //! \param LEDType Hardware options to be passed to Adafruit library
     //! \param dataPin The pin the data is sent on
     //! \param numPanels The number of panels daisy-chained together
-    RIBargraphDisplay(neoPixelType LEDType, uint8_t dataPin, uint8_t numPanels=1);
+    RIBargraphDisplay(neoPixelType LEDType, uint8_t dataPin);
+
+    //! \brief Set the number of panels in the display
+    //! \param panels - the number of panels (can be 1 or 2)
+    void setNumberPanels(uint8_t panels);
 
     //! \brief Initializtion
     //! Typically called from the setup() routine in the main program
@@ -72,6 +76,8 @@ public:
     void setBrightness(uint8_t b);
 
 private:
+    neoPixelType _type; 
+    uint8_t _pin;
     uint16_t peakRow;
 
 };

@@ -8,6 +8,8 @@
 #include "SWGreen.h"
 #include "Display.h"
 #include "Settings.h"
+#include "LED1.h"
+#include "LED2.h"
 #include "Config.h"
 
 SettingsMode_ SettingsMode;
@@ -23,6 +25,7 @@ void SettingsMode_::modeStart()
     // Clear pressed buttons
     SWRed.tapped();
     SWGreen.tapped();
+    delay(DISPLAY_FUDGE_MS);
     display();
 }
 
@@ -32,6 +35,7 @@ void SettingsMode_::modeStop()
     EnergyRaceGoalJoules.save();
     MaxPowerWatts.save();
     RaceTimeSeconds.save();
+    PanelsPerBargraph.save();
 }
 
 void SettingsMode_::modeUpdate()
@@ -51,6 +55,12 @@ void SettingsMode_::modeUpdate()
             break;
         case 2:
             RaceTimeSeconds.increment();
+            break;
+        case 3:
+            PanelsPerBargraph.increment();
+            LED1.setNumberPanels(PanelsPerBargraph.get());
+            LED2.setNumberPanels(PanelsPerBargraph.get());
+            delay(DISPLAY_FUDGE_MS);
             break;
         default:
             break;
@@ -74,6 +84,10 @@ void SettingsMode_::display()
         break;
     case 2:
         snprintf(buf, 12, "Race T=%ds", RaceTimeSeconds.get());
+        Display.say(buf);
+        break;
+    case 3:
+        snprintf(buf, 12, "Panels=%d", PanelsPerBargraph.get());
         Display.say(buf);
         break;
     default:

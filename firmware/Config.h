@@ -35,9 +35,11 @@
 
 #define COUNTDOWN_START             3
 
-#define ENERGY_FILL_LED_UPDATE_MS   50
+#define ENERGY_FILL_LED_UPDATE_MS   35
 #define ENERGY_FILL_VICTORY_SECONDS 10
 #define ENERGY_RACE_TIE_DIFF_J      1
 
 #define SETTING_REPEAT_INITIAL_MS   500
 #define SETTING_REPEAT_MS           120
+
+#define DISPLAY_FUDGE_MS            100
