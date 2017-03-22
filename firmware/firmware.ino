@@ -16,14 +16,14 @@
 #include "Team2.h"
 #include "EnergyFillMode.h"
 #include "TimedPowerMode.h"
+#include "TimedEnergyMode.h"
 #include "SettingsMode.h"
-#include "EmptyMode.h"
 #include "Display.h"
 #include "LED1.h"
 #include "LED2.h"
 
 int8_t modeIdx = -1;
-Mode* modes[] = { &EnergyFillMode, &TimedPowerMode, &EmptyMode, &SettingsMode };
+Mode* modes[] = { &EnergyFillMode, &TimedPowerMode, &TimedEnergyMode, &SettingsMode };
 Mode* mode = NULL;
 
 void switchMode(Mode* newMode)
@@ -73,9 +73,9 @@ void setup()
 
     // Init modes.  Modes with child modes are responsible for calling
     // begin() for their children
-    EmptyMode.begin();
-    EnergyFillMode.begin();
     TimedPowerMode.begin();
+    EnergyFillMode.begin();
+    TimedEnergyMode.begin();
     SettingsMode.begin();
     MEMDB();
 
