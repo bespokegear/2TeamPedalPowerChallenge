@@ -30,13 +30,14 @@ void EnergyFillVictoryMode_::modeStart()
     DB(F(" T2="));
     DBLN(Team2.joules());
     startMillis = Millis();
-    if (Team1.joules() > Team2.joules()) {
-        winner = 1;
-    } else if (Team1.joules() < Team2.joules()) {
-        winner = 2;
-    } else {
-        // tie
+    float diff = Team2.joules() - Team1.joules();
+    if (diff<0) diff*=-1;
+    if (diff <= ENERGY_RACE_TIE_DIFF_J) {
         winner = 0;
+    } else if (Team1.joules() > Team2.joules()) {
+        winner = 1;
+    } else {
+        winner = 2;
     }
     Display.winner(winner);
     setUpdatePeriod(50);
