@@ -24,7 +24,6 @@ void EnergyFillWaitMode_::modeStart()
     DBLN(F("EnergyFillWaitMode::start()"));
     wipeRow = LED1.numRows();
     lastWipe = Millis();
-    delay(DISPLAY_FUDGE_MS);
     Display.say("Energy Mode");
 }
 

@@ -12,7 +12,6 @@ EmptyMode_::EmptyMode_()
 void EmptyMode_::modeStart()
 {
     DBLN(F("EmptyMode::start()"));
-    delay(DISPLAY_FUDGE_MS);
     Display.say("Empty Mode");
 }
 

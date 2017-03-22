@@ -25,7 +25,6 @@ void SettingsMode_::modeStart()
     // Clear pressed buttons
     SWRed.tapped();
     SWGreen.tapped();
-    delay(DISPLAY_FUDGE_MS);
     display();
 }
 
@@ -60,7 +59,6 @@ void SettingsMode_::modeUpdate()
             PanelsPerBargraph.increment();
             LED1.setNumberPanels(PanelsPerBargraph.get());
             LED2.setNumberPanels(PanelsPerBargraph.get());
-            delay(DISPLAY_FUDGE_MS);
             break;
         default:
             break;

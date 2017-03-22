@@ -42,4 +42,3 @@
 #define SETTING_REPEAT_INITIAL_MS   500
 #define SETTING_REPEAT_MS           120
 
-#define DISPLAY_FUDGE_MS            100
