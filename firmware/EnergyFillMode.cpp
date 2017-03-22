@@ -6,6 +6,7 @@
 #include "EnergyFillVictoryMode.h"
 #include "SWRed.h"
 #include "SWGreen.h"
+#include "MemDebug.h"
 
 EnergyFillMode_ EnergyFillMode;
 
@@ -36,6 +37,7 @@ void EnergyFillMode_::modeStop()
 
 void EnergyFillMode_::modeUpdate()
 {
+    MEMDB();
     if (mode->isFinished()) {
         if (mode == &EnergyFillWaitMode) {
             switchMode(&EnergyFillCountdownMode);

@@ -15,6 +15,7 @@ public:
 
     //! Get Instantaneous Power in Watts
     float watts();
+    float maxWatts();
 
     //! Get Energy in joules since last reset
     float joules();
@@ -25,6 +26,7 @@ public:
 private:
     Player _adultPlayer;
     Player _childPlayer;
+    float _maxWatts;
 
 };
 

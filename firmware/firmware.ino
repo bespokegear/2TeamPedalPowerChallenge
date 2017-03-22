@@ -2,8 +2,10 @@
 #include <Mutila.h>
 #include <MutilaDebug.h>
 #include <Adafruit_NeoPixel.h>
+#include <MemoryFree.h>
 #include <stdint.h>
 
+#include "MemDebug.h"
 #include "Heartbeat.h"
 #include "Config.h"
 #include "SWA.h"
@@ -13,6 +15,7 @@
 #include "Team1.h"
 #include "Team2.h"
 #include "EnergyFillMode.h"
+#include "TimedPowerMode.h"
 #include "SettingsMode.h"
 #include "EmptyMode.h"
 #include "Display.h"
@@ -20,7 +23,7 @@
 #include "LED2.h"
 
 int8_t modeIdx = -1;
-Mode* modes[] = { &EnergyFillMode, &EmptyMode, &EmptyMode, &SettingsMode };
+Mode* modes[] = { &EnergyFillMode, &TimedPowerMode, &EmptyMode, &SettingsMode };
 Mode* mode = NULL;
 
 void switchMode(Mode* newMode)
@@ -54,6 +57,7 @@ void setup()
     // Use external reference voltage for analog reads
     analogReference(EXTERNAL);
 
+    MEMDB();
     Heartbeat.begin();
     SWA.begin();
     SWB.begin();
@@ -62,14 +66,18 @@ void setup()
     Team1.begin();
     Team2.begin();
     Display.begin();
+    MEMDB();
     LED1.begin();
     LED2.begin();
+    MEMDB();
 
     // Init modes.  Modes with child modes are responsible for calling
     // begin() for their children
     EmptyMode.begin();
     EnergyFillMode.begin();
+    TimedPowerMode.begin();
     SettingsMode.begin();
+    MEMDB();
 
     // Set the mode based on the position of SWA and SWB
     modeCheck();

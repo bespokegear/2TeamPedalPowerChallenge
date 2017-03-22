@@ -3,7 +3,8 @@
 
 Team::Team(uint8_t adultPin, float childPin) :
     _adultPlayer(adultPin, PLAYER_ADULT_LOAD_OHM),
-    _childPlayer(childPin, PLAYER_CHILD_LOAD_OHM)
+    _childPlayer(childPin, PLAYER_CHILD_LOAD_OHM),
+    _maxWatts(0)
 {
 }
 
@@ -24,12 +25,22 @@ void Team::reset()
 {
     _adultPlayer.resetJoules();
     _childPlayer.resetJoules();
+    _maxWatts = 0;
 }
 
 //! Get Instantaneous Power in Watts
 float Team::watts()
 {
-    return _adultPlayer.averageWatts() + _childPlayer.averageWatts();
+    float w = _adultPlayer.averageWatts() + _childPlayer.averageWatts();
+    if (w > _maxWatts) {
+        _maxWatts = w;
+    }
+    return w;
+}
+
+float Team::maxWatts()
+{
+    return _maxWatts;
 }
 
 //! Get Energy in joules since last reset

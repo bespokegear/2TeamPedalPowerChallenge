@@ -51,6 +51,7 @@ void Display_::say(const char* str)
     DBLN(str);
     snprintf(buf, 17, "aAAST%s", str);
     clearBuf();
+    delay(50);
     snprintf(buf, 17, "aAAST%s", str);
     sendBuf(17, '#');
 }
