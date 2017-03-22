@@ -39,6 +39,7 @@ void TimedPowerRaceMode_::modeStop()
     DBLN(F("TimedPowerRaceMode::stop()"));
     Team1.setFreeze(true);
     Team2.setFreeze(true);
+    plot(Team1.maxWatts() / MaxPowerWatts.get(), Team2.maxWatts() / MaxPowerWatts.get());
 }
 
 void TimedPowerRaceMode_::modeUpdate()
@@ -68,12 +69,12 @@ void TimedPowerRaceMode_::updateLEDs()
         // Expressed as 0.0 - 1.0
         float p1 = Team1.watts() / MaxPowerWatts.get();
         float p2 = Team2.watts() / MaxPowerWatts.get();
-        DB(("TimedPower p1="));
-        DB(p1);
-        DB((" p2="));
-        DBLN(p2);
-        LED1.graph(p1, TIMED_POWER_TEAM1_COLOR, true, TIMED_POWER_TEAM1_PEAKCOLOR);
-        LED2.graph(p2, TIMED_POWER_TEAM2_COLOR, true, TIMED_POWER_TEAM2_PEAKCOLOR);
+        plot(Team1.watts() / MaxPowerWatts.get(), Team2.watts() / MaxPowerWatts.get());
     }
+}
+
+void TimedPowerRaceMode_::plot(float p1, float p2) {
+    LED1.graph(p1, TIMED_POWER_TEAM1_COLOR, true, TIMED_POWER_TEAM1_PEAKCOLOR);
+    LED2.graph(p2, TIMED_POWER_TEAM2_COLOR, true, TIMED_POWER_TEAM2_PEAKCOLOR);
 }
 
