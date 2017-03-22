@@ -25,7 +25,7 @@ void TimedEnergyRaceMode_::modeStart()
 {
     DBLN(F("TimedEnergyRaceMode::start()"));
     raceStart = Millis();
-    nextCounter = raceStart;
+    nextCounter = raceStart + COUNTER_ONSET_DELAY_MS;
     nextLED = raceStart;
     Team1.reset();
     Team2.reset();
