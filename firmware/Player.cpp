@@ -1,5 +1,6 @@
 #include <MutilaDebug.h>
 #include "Player.h"
+#include "CorrectedMillis.h"
 
 Player::Player(const uint8_t pin, const float loadOhms) :
     EMAVDivSampler(pin, PLAYER_VIN_R1_KOHM, PLAYER_VIN_R2_KOHM, PLAYER_VIN_VREF, PLAYER_VIN_PERIOD_MS, PLAYER_VIN_ALPHA),

@@ -64,8 +64,6 @@ void setup()
     Display.begin();
     LED1.begin();
     LED2.begin();
-    LED1.clear();
-    LED2.clear();
 
     // Init modes.  Modes with child modes are responsible for calling
     // begin() for their children

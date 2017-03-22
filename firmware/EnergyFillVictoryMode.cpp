@@ -68,11 +68,9 @@ bool EnergyFillVictoryMode_::isFinished()
 
 void EnergyFillVictoryMode_::throb(RIBargraphDisplay* led)
 {
-    double dim = sinf(((millis()-startMillis)%3142)/1000.);
+    double dim = sinf(((millis()-startMillis+1571)%3142)/1000.);
     dim *= 0.85;
     dim += 0.15;
-    DB("throb=");
-    DBLN(dim*255);
     led->setBrightness(dim*255);
 }
 
@@ -83,8 +81,6 @@ void EnergyFillVictoryMode_::fade(RIBargraphDisplay* led)
     dim = 1.-dim;
     dim *= 0.85;
     dim += 0.15;
-    DB("fade=");
-    DBLN(dim*255);
     led->setBrightness(dim*255);
 }
 

@@ -22,8 +22,8 @@ void EnergyFillCountdownMode_::modeStart()
 {
     DBLN(F("EnergyFillCountdownMode::start()"));
     setCount(COUNTDOWN_START);
-    LED1.clear();
-    LED2.clear();
+    LED1.clear(true);
+    LED2.clear(true);
 }
 
 void EnergyFillCountdownMode_::modeStop()

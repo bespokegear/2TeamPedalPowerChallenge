@@ -1,44 +1,52 @@
 #include <MutilaDebug.h>
 #include "RIBargraphDisplay.h"
+#include "OffsetMillis.h"
+#include "Config.h"
 
-RIBargraphDisplay::RIBargraphDisplay(neoPixelType LEDType, uint8_t numPanels, uint8_t dataPin) :
-    LEDs(numPanels*60, dataPin, LEDType)
+RIBargraphDisplay::RIBargraphDisplay(neoPixelType LEDType, uint8_t dataPin, uint8_t numPanels) :
+    Adafruit_NeoPixel(numPanels*60, dataPin, LEDType)
 {
 }
 
 void RIBargraphDisplay::begin()
 {
-    LEDs.begin();
-    clear();
+    Adafruit_NeoPixel::begin();
+    clear(true);
     clearPeak();
 }
 
 void RIBargraphDisplay::clear(bool immediate)
 {
-    LEDs.clear();
+    DBLN(F("RIBargraphDisplay::clear"));
+    Adafruit_NeoPixel::clear();
     if (immediate) { 
-        LEDs.show(); 
+        show(); 
     }
 }
 
+void RIBargraphDisplay::show()
+{
+    addMillisOffset(LED_CLOCK_CORRECTION*numRows()*2/1000.);
+    Adafruit_NeoPixel::show();
+}
 
 uint16_t RIBargraphDisplay::numRows() 
 { 
-    return LEDs.numPixels() / 2; 
+    return Adafruit_NeoPixel::numPixels() / 2; 
 }
 
 void RIBargraphDisplay::setRowColor(uint16_t row, uint32_t rgb, bool immediate)
 {
-    LEDs.setPixelColor(row*2, rgb);
-    LEDs.setPixelColor((row*2)+1, rgb);
+    Adafruit_NeoPixel::setPixelColor(row*2, rgb);
+    Adafruit_NeoPixel::setPixelColor((row*2)+1, rgb);
     if (immediate) { 
-        LEDs.show(); 
+        show(); 
     }
 }
 
 uint32_t RIBargraphDisplay::getRowColor(uint16_t row)
 {
-    return LEDs.getPixelColor(row*2);
+    return Adafruit_NeoPixel::getPixelColor(row*2);
 }
 
 void RIBargraphDisplay::graph(uint16_t n, uint32_t barColor, bool peak, uint32_t peakColor)
@@ -69,7 +77,7 @@ void RIBargraphDisplay::graph(uint16_t n, uint32_t barColor, bool peak, uint32_t
             }
         }
     }
-    LEDs.show();
+    show();
 }
 
 uint16_t RIBargraphDisplay::getPeak()
@@ -84,8 +92,8 @@ void RIBargraphDisplay::clearPeak()
 
 void RIBargraphDisplay::setBrightness(uint8_t b)
 {
-    LEDs.setBrightness(b);
-    LEDs.show();
+    Adafruit_NeoPixel::setBrightness(b);
+    show();
 }
 
 

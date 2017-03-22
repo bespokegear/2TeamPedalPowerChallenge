@@ -9,6 +9,7 @@
 #define LED2_NUM_PANELS             2
 #define LED2_DATA_PIN               6
 #define LED2_NEOPIXEL_TYPE          (NEO_RBG + NEO_KHZ800)
+#define LED_CLOCK_CORRECTION        24.5
 
 #define HEARTBEAT_LED_PIN           13
 #define SWA_PIN                     4
