@@ -1,9 +1,9 @@
 #include <MutilaDebug.h>
+#include <Millis.h>
 #include "EnergyFillRaceMode.h"
 #include "Display.h"
 #include "SWRed.h"
 #include "Config.h"
-#include "CorrectedMillis.h"
 #include "Team1.h"
 #include "Team2.h"
 #include "LED1.h"
@@ -27,6 +27,7 @@ void EnergyFillRaceMode_::begin()
 void EnergyFillRaceMode_::modeStart()
 {
     DBLN(F("EnergyFillRaceMode::start()"));
+    raceStart = Millis();
     raceOver = false;
     Team1.reset();
     Team2.reset();
@@ -78,12 +79,6 @@ uint32_t getColor(float n)
     uint8_t b = bp * 255;
     uint32_t rgb = r;
     
-    DB(F("COL r="));
-    DB(r);
-    DB(" g=");
-    DB(g);
-    DB(" b=");
-    DBLN(b);
     rgb <<= 8;
     rgb += g;
     rgb <<= 8;
@@ -93,15 +88,30 @@ uint32_t getColor(float n)
 
 void EnergyFillRaceMode_::updateLEDs()
 {
-    DB(F("updateLEDs t1="));
     // Expressed as 0.0 - 1.0
     float t1Complete = Team1.joules() / EnergyRaceGoalJoules.get();
     float t2Complete = Team2.joules() / EnergyRaceGoalJoules.get();
-    DB(t1Complete*100);
-    DB(F("% t2="));
-    DB(t2Complete*100);
-    DBLN('%');
-    LED1.graph(t1Complete < 0.001 ? 0 : LED1.numRows()*t1Complete, getColor(t1Complete), false);
-    LED2.graph(t2Complete < 0.001 ? 0 : LED2.numRows()*t2Complete, getColor(t2Complete), false);
+    /*
+    DB(F("updateLEDs T1:"));
+    DB(Team1.watts());
+    DB(F("W/"));
+    DB(Team1.joules());
+    DB(F("J/"));
+    DB(EnergyRaceGoalJoules.get());
+    DB('=');
+    DB(t1Complete);
+    DB(F(" T2:"));
+    DB(Team2.watts());
+    DB(F("W/"));
+    DB(Team2.joules());
+    DB(F("J/"));
+    DB(EnergyRaceGoalJoules.get());
+    DB('=');
+    DB(t2Complete);
+    DB(F(" elapsed="));
+    DBLN((Millis()-raceStart)/1000);
+    */
+    LED1.graph(t1Complete, getColor(t1Complete), false);
+    LED2.graph(t2Complete, getColor(t2Complete), false);
 }
 

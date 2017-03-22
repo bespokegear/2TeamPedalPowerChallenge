@@ -1,6 +1,6 @@
 #include <MutilaDebug.h>
+#include <Millis.h>
 #include "RIBargraphDisplay.h"
-#include "OffsetMillis.h"
 #include "Config.h"
 
 RIBargraphDisplay::RIBargraphDisplay(neoPixelType LEDType, uint8_t dataPin, uint8_t numPanels) :
@@ -49,33 +49,23 @@ uint32_t RIBargraphDisplay::getRowColor(uint16_t row)
     return Adafruit_NeoPixel::getPixelColor(row*2);
 }
 
-void RIBargraphDisplay::graph(uint16_t n, uint32_t barColor, bool peak, uint32_t peakColor)
+void RIBargraphDisplay::graph(float percent, uint32_t barColor, bool peak, uint32_t peakColor)
 {
-    if (peak) {
-        if (n > peakRow) {
-            peakRow = n;
+    uint16_t topLit = 0;
+    for (uint16_t i=0; i<numRows(); i++) {
+        bool lit = percent >= (float)(i+1)/numRows();
+        if (lit) {
+            setRowColor(i, barColor, false);
+            topLit = i;
+        } else {
+            setRowColor(i, 0, false);
         }
     }
-    for (uint16_t i=0; i<=numRows(); i++) {
-        if (!peak) {
-            setRowColor(i, i<=n ? barColor : 0, false); 
-        } else {
-            if (i<n) {
-                setRowColor(i, barColor, false);
-            } else if (i==n) {
-                if (peakRow>n) {
-                    setRowColor(i, barColor, false);
-                } else {
-                    setRowColor(i, peakColor, false);
-                }
-            } else {
-                if (i == peakRow) {
-                    setRowColor(i, peakColor, false);
-                } else { 
-                    setRowColor(i, 0, false);
-                }
-            }
+    if (peak) {
+        if (topLit > peakRow) {
+            peakRow = topLit;
         }
+        setRowColor(peakRow, peakColor, false);
     }
     show();
 }

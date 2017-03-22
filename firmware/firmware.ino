@@ -73,6 +73,8 @@ void setup()
 
     // Set the mode based on the position of SWA and SWB
     modeCheck();
+
+    DBLN(F("setup:E"));
 }
 
 void loop()

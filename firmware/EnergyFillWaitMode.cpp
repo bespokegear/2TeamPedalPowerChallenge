@@ -1,9 +1,9 @@
 #include <MutilaDebug.h>
+#include <Millis.h>
 #include "EnergyFillWaitMode.h"
 #include "Display.h"
 #include "SWRed.h"
 #include "Config.h"
-#include "CorrectedMillis.h"
 #include "LED1.h"
 #include "LED2.h"
 #include "Display.h"
@@ -23,7 +23,7 @@ void EnergyFillWaitMode_::modeStart()
 {
     DBLN(F("EnergyFillWaitMode::start()"));
     wipeRow = LED1.numRows();
-    lastWipe = millis();
+    lastWipe = Millis();
     Display.say("Energy Mode");
 }
 
@@ -36,10 +36,10 @@ void EnergyFillWaitMode_::modeStop()
 
 void EnergyFillWaitMode_::modeUpdate()
 {
-    if (millis() >= lastWipe + 35 && wipeRow >= 0) {
-        LED1.setRowColor(wipeRow, 0);
-        LED2.setRowColor(wipeRow, 0);
-        lastWipe = millis();
+    if (Millis() >= lastWipe + 35 && wipeRow >= 0) {
+        LED1.setRowColor(wipeRow, 0, true);
+        LED2.setRowColor(wipeRow, 0, true);
+        lastWipe = Millis();
         wipeRow--;
     }
 }

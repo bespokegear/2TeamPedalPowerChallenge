@@ -1,6 +1,6 @@
 #include <MutilaDebug.h>
+#include <Millis.h>
 #include "Player.h"
-#include "CorrectedMillis.h"
 
 Player::Player(const uint8_t pin, const float loadOhms) :
     EMAVDivSampler(pin, PLAYER_VIN_R1_KOHM, PLAYER_VIN_R2_KOHM, PLAYER_VIN_VREF, PLAYER_VIN_PERIOD_MS, PLAYER_VIN_ALPHA),
@@ -41,6 +41,7 @@ void Player::resetJoules()
 {
     _joules = 0.;
     _frozen = false;
+    _lastUpdated = Millis();
 }
 
 float Player::joules()
@@ -50,12 +51,19 @@ float Player::joules()
 
 void Player::update()
 {
-    if (_periodMs == 0 || millis() >= _lastUpdated + _periodMs || _lastUpdated == 0) {
+    unsigned long elapsed = Millis()-_lastUpdated;
+    if (_periodMs == 0 || elapsed >= _periodMs || _lastUpdated == 0) {
         if (!_frozen) {
+            _lastUpdated = Millis();
             _lastSample = analogRead(_pin);
             _movingAverage = (_alpha*_lastSample) + ((1-_alpha)*_movingAverage);
-            _lastUpdated = millis();
-            _joules += (averageWatts() * _periodMs) / 1000.;
+            _joules += averageWatts() * elapsed/1000.;
+            //DB(F("Player::update elapsed="));
+            //DB(elapsed);
+            //DB(F(" _av.watts="));
+            //DB(averageWatts());
+            //DB(F(" _joules="));
+            //DBLN(_joules);
         }
     }   
 }

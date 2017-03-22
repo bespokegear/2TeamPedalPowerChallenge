@@ -39,7 +39,7 @@ public:
     uint16_t numRows();
 
     //! \brief Set row color
-    void setRowColor(uint16_t row, uint32_t rgb, bool immediate=true);
+    void setRowColor(uint16_t row, uint32_t rgb, bool immediate=false);
 
     //! \brief Get row color
     //! \return 32-bit RGB encoded color value, i.e. 0xrrggbbUL
@@ -49,12 +49,17 @@ public:
     uint32_t getRowColor(uint16_t row);
 
     //! \brief Plot bar graph
-    //! \param n Number of rows to illuminate
+    //! \param percent How much to fill, expressed as 0.0 - 1.0
     //! \param barColor The RGB color of the colored-in parts of the graph
     //! \param peak Use peak marker
     //! \param peakColor Color of peak marker, if used
+    //! Bars will be filled only when the percent value exceeds the "top" of a segment
+    //! i.e. if there are three rows, the first row will only become illuminated if
+    //! percent is higher than 0.3333, and the top row will only illuminate when the
+    //! percent is 1.0 or more.
+    //
     //! Note: the peak marker is reset by calling clearPeak()
-    void graph(uint16_t n, uint32_t barColor, bool peak, uint32_t peakColor=0);
+    void graph(float percent, uint32_t barColor, bool peak, uint32_t peakColor=0);
 
     //! \brief Get row of current peak marker
     uint16_t getPeak();

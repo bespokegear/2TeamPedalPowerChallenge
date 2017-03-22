@@ -14,6 +14,7 @@ public:
     void updateLEDs();
 
 private:
+    unsigned long raceStart;
     bool raceOver;
 
 };

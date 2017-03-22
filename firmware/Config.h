@@ -22,7 +22,7 @@
 #define PLAYER_VIN_R1_KOHM          330
 #define PLAYER_VIN_R2_KOHM          10
 #define PLAYER_VIN_VREF             3.3
-#define PLAYER_VIN_PERIOD_MS        20
+#define PLAYER_VIN_PERIOD_MS        200
 #define PLAYER_VIN_ALPHA            0.9
 #define PLAYER_VIN_FACTOR           1.25
 #define PLAYER_ADULT_LOAD_OHM       4.4
@@ -35,7 +35,7 @@
 
 #define COUNTDOWN_START             3
 
-#define ENERGY_FILL_LED_UPDATE_MS   100
+#define ENERGY_FILL_LED_UPDATE_MS   50
 #define ENERGY_FILL_VICTORY_SECONDS 10
 
 #define SETTING_REPEAT_INITIAL_MS   500

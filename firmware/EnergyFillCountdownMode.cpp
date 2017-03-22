@@ -3,7 +3,7 @@
 #include "Display.h"
 #include "SWRed.h"
 #include "Config.h"
-#include "CorrectedMillis.h"
+#include <Millis.h>
 #include "LED1.h"
 #include "LED2.h"
 
@@ -38,7 +38,7 @@ void EnergyFillCountdownMode_::modeUpdate()
         return;
     }
 
-    if (millis() > lastCount + 1000 && count > 0) {
+    if (Millis() > lastCount + 1000 && count > 0) {
         setCount(count - 1);
     }
 }
@@ -46,7 +46,7 @@ void EnergyFillCountdownMode_::modeUpdate()
 void EnergyFillCountdownMode_::setCount(uint8_t c)
 {
     count = c;
-    lastCount = millis();
+    lastCount = Millis();
     Display.countdown(c);
 }
 

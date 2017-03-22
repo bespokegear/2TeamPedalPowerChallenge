@@ -1,10 +1,10 @@
 #include <math.h>
 #include <MutilaDebug.h>
+#include <Millis.h>
 #include "EnergyFillVictoryMode.h"
 #include "Display.h"
 #include "SWRed.h"
 #include "Config.h"
-#include "CorrectedMillis.h"
 #include "Team1.h"
 #include "Team2.h"
 #include "LED1.h"
@@ -29,7 +29,7 @@ void EnergyFillVictoryMode_::modeStart()
     DB(Team1.joules());
     DB(F(" T2="));
     DBLN(Team2.joules());
-    startMillis = millis();
+    startMillis = Millis();
     if (Team1.joules() > Team2.joules()) {
         winner = 1;
     } else if (Team1.joules() < Team2.joules()) {
@@ -68,7 +68,7 @@ bool EnergyFillVictoryMode_::isFinished()
 
 void EnergyFillVictoryMode_::throb(RIBargraphDisplay* led)
 {
-    double dim = sinf(((millis()-startMillis+1571)%3142)/1000.);
+    double dim = sinf(((Millis()-startMillis+1571)%3142)/1000.);
     dim *= 0.85;
     dim += 0.15;
     led->setBrightness(dim*255);
@@ -76,7 +76,7 @@ void EnergyFillVictoryMode_::throb(RIBargraphDisplay* led)
 
 void EnergyFillVictoryMode_::fade(RIBargraphDisplay* led)
 {
-    float dim = (millis() - startMillis)/1500.0;
+    float dim = (Millis() - startMillis)/1500.0;
     if (dim>1) dim=1;
     dim = 1.-dim;
     dim *= 0.85;
