@@ -11,11 +11,13 @@ public:
     void modeStop();
     void modeUpdate();
     bool isFinished();
+    void updateCounter();
     void updateLEDs();
 
 private:
     unsigned long raceStart;
-    bool raceOver;
+    unsigned long nextCounter;
+    unsigned long nextLED;
 
 };
 

@@ -19,16 +19,14 @@ TimedPowerRaceMode_::TimedPowerRaceMode_()
 void TimedPowerRaceMode_::begin()
 {
     DBLN(F("TimedPowerRaceMode::begin()"));
-    // We'll only update the LED displays once every 100 ms
-    //
-    setUpdatePeriod(TIMED_POWER_LED_UPDATE_MS);
 }
 
 void TimedPowerRaceMode_::modeStart()
 {
     DBLN(F("TimedPowerRaceMode::start()"));
     raceStart = Millis();
-    raceOver = false;
+    nextCounter = raceStart;
+    nextLED = raceStart;
     Team1.reset();
     Team2.reset();
     LED1.clearPeak();
@@ -45,32 +43,37 @@ void TimedPowerRaceMode_::modeStop()
 
 void TimedPowerRaceMode_::modeUpdate()
 {
-    if (SWRed.tapped()) {
-        raceOver = true;
-    }
-
-    if (Millis() > raceStart + (1000*RaceTimeSeconds.get())) {
-        raceOver = true;
-    }
-
+    updateCounter();
     updateLEDs();
 }
 
 bool TimedPowerRaceMode_::isFinished()
 {
-    return raceOver;
+    return SWRed.tapped() || Millis() > raceStart + (1000*RaceTimeSeconds.get());
+}
+
+void TimedPowerRaceMode_::updateCounter()
+{
+    if (Millis() > nextCounter) {
+        nextCounter = Millis() + TIMED_POWER_COUNTER_MS;
+        uint16_t tenths = (Millis()-raceStart)/ 100;
+        Display.timer((uint16_t)((RaceTimeSeconds.get()*10)-tenths));
+    }
 }
 
 void TimedPowerRaceMode_::updateLEDs()
 {
-    // Expressed as 0.0 - 1.0
-    float p1 = Team1.watts() / MaxPowerWatts.get();
-    float p2 = Team2.watts() / MaxPowerWatts.get();
-    DB(("TimedPower p1="));
-    DB(p1);
-    DB((" p2="));
-    DBLN(p2);
-    LED1.graph(p1, TIMED_POWER_TEAM1_COLOR, true, TIMED_POWER_TEAM1_PEAKCOLOR);
-    LED2.graph(p2, TIMED_POWER_TEAM2_COLOR, true, TIMED_POWER_TEAM2_PEAKCOLOR);
+    if (Millis() > nextLED) {
+        nextLED = Millis() + TIMED_POWER_LED_MS;
+        // Expressed as 0.0 - 1.0
+        float p1 = Team1.watts() / MaxPowerWatts.get();
+        float p2 = Team2.watts() / MaxPowerWatts.get();
+        DB(("TimedPower p1="));
+        DB(p1);
+        DB((" p2="));
+        DBLN(p2);
+        LED1.graph(p1, TIMED_POWER_TEAM1_COLOR, true, TIMED_POWER_TEAM1_PEAKCOLOR);
+        LED2.graph(p2, TIMED_POWER_TEAM2_COLOR, true, TIMED_POWER_TEAM2_PEAKCOLOR);
+    }
 }
 

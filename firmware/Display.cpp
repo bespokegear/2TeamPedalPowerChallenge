@@ -56,12 +56,12 @@ void Display_::say(const char* str)
     sendBuf(17, '#');
 }
 
-void Display_::countdown(uint16_t tenthsSec)
+void Display_::timer(uint16_t tenthsSec)
 {
-    DB(F("DISPLAY [countdown]: "));
+    DB(F("DISPLAY [timer]: "));
     DBLN(tenthsSec);
     clearBuf();
-    snprintf(buf, 12, "aAACD%04d", tenthsSec);
+    snprintf(buf, 12, "aAAT%04d", tenthsSec);
     sendBuf(12, '-');
 }
 
