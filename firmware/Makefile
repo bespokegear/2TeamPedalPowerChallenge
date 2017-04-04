@@ -1,4 +1,6 @@
 CPPFLAGS += -Wno-unused-variable -Wno-deprecated-declarations -Wno-cpp -Wno-write-strings
+CPPFLAGS += -DSERIAL_TX_BUFFER_SIZE=8
+CPPFLAGS += -DSERIAL_RX_BUFFER_SIZE=8
 #CPPFLAGS += -DMUTILADEBUG
 #CPPFLAGS += -DDEBUG
 #CPPFLAGS += -DMEMDEBUG
