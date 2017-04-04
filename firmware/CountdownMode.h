@@ -3,9 +3,9 @@
 #include <Mode.h>
 #include <stdint.h>
 
-class EnergyFillCountdownMode_ : public Mode {
+class CountdownMode_ : public Mode {
 public:
-    EnergyFillCountdownMode_();
+    CountdownMode_();
     void begin();
     void modeStart();
     void modeStop();
@@ -22,4 +22,4 @@ private:
 
 };
 
-extern EnergyFillCountdownMode_ EnergyFillCountdownMode;
+extern CountdownMode_ CountdownMode;
