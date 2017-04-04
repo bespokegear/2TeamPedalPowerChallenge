@@ -1,17 +1,18 @@
 #include <Arduino.h>
 #include <MutilaDebug.h>
+#include "Config.h"
 #include "Display.h"
 
-char buf[18];
+char buf[DISPLAY_BUF_LEN];
 
 void clearBuf()
 {
-    memset(buf, 0, 18);
+    memset(buf, 0, DISPLAY_BUF_LEN);
 }
 
 void sendBuf(uint8_t len, char pad)
 {
-    for(uint8_t i=len; i<18; i++) {
+    for(uint8_t i=len; i<DISPLAY_BUF_LEN; i++) {
         buf[i] = pad;
     }
     Serial.println(buf);
@@ -49,10 +50,10 @@ void Display_::say(const char* str)
 {
     DB(F("DISPLAY [str - TODO]: "));
     DBLN(str);
-    snprintf(buf, 17, "aAAST%s", str);
+    snprintf(buf, DISPLAY_BUF_LEN-1, "aAAST%s", str);
     clearBuf();
     delay(50);
-    snprintf(buf, 17, "aAAST%s", str);
+    snprintf(buf, DISPLAY_BUF_LEN-1, "aAAST%s", str);
     sendBuf(17, '#');
 }
 

@@ -11,6 +11,8 @@
 #define LED2_NEOPIXEL_TYPE          (NEO_RBG + NEO_KHZ800)
 #define LED_CLOCK_CORRECTION        24.5
 
+#define DISPLAY_BUF_LEN             18
+
 #define HEARTBEAT_LED_PIN           13
 #define SWA_PIN                     4
 #define SWB_PIN                     7

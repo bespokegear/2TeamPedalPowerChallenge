@@ -6,7 +6,6 @@
 #include <stdint.h>
 
 #include "MemDebug.h"
-#include "Heartbeat.h"
 #include "Config.h"
 #include "SWA.h"
 #include "SWB.h"
@@ -58,7 +57,6 @@ void setup()
     analogReference(EXTERNAL);
 
     MEMDB();
-    Heartbeat.begin();
     SWA.begin();
     SWB.begin();
     SWRed.begin();
@@ -87,7 +85,6 @@ void setup()
 
 void loop()
 {
-    Heartbeat.update();
     SWA.update();
     SWB.update();
     SWRed.update();
