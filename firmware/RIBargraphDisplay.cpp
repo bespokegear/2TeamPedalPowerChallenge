@@ -23,7 +23,7 @@ void RIBargraphDisplay::begin()
 void RIBargraphDisplay::setNumberPanels(uint8_t panels)
 {
     clear(true);
-    updateLength(panels*60);
+    updateLength(panels*RI_BARGRAPH_PANEL_LEDS);
     clear(true);
     DB(F("Panels="));
     DB(panels);

@@ -13,6 +13,8 @@
 #include <Adafruit_NeoPixel.h>
 #include <stdint.h>
 
+#define RI_BARGRAPH_PANEL_LEDS 60
+
 class RIBargraphDisplay : public Adafruit_NeoPixel {
 public:
     //! \brief Constructor
