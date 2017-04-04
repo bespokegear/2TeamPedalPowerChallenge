@@ -93,7 +93,7 @@ uint16_t RIBargraphDisplay::getPeak()
 
 void RIBargraphDisplay::clearPeak()
 {
-    peakRow = 0;
+    peakRow = -1;
 }
 
 void RIBargraphDisplay::setBrightness(uint8_t b)
