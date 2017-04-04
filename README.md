@@ -2,14 +2,17 @@
 
 ## Important note about memory usage
 
-This sketch is VERY tight on SRAM.  When using two panels per display, there will not be
-enough memory to run reliably unless the system serial buffer size is reduced.  To do this
-is automatic when building using the Makefile method, but when building using the Arduino IDE
-it is vital that you use version 1.7.9 or later so the buildprefs.txt file is used.
+This sketch is *very* tight on SRAM.  When using two panels per display, there will not be enough memory to run reliably unless the system serial buffer size is reduced.  To do this is automatic when building using the Makefile method, but when building using the Arduino IDE you should edit your boards.txt file adding the following line to the nano build flags:
+
+    nano.build.extra_flags=-DSERIAL_TX_BUFFER_SIZE=8 -DSERIAL_RX_BUFFER_SIZE=8
+
+It goes just after the line starting ''nano.build.variant=eightanaloginputs''.
+
+If you do not do this, the sketch may behave poorly - crashing after some runtime, or exhibiting corruption of the LED displays, or failing to initialize the LED displays.
 
 ## Pre-requisites
 
-* Install the Arduino IDE 1.7.9 or later
+* Install the Arduino IDE 1.6.6 or later
 ** Windows & Mac users may find a download link here: https://www.arduino.cc/en/Main/Software
 ** Major Linux distros carry it in their software repositories, or the link above may be used
 ** Install ''Mutila'' library, link: https://github.com/matthewg42/Mutila 
