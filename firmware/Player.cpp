@@ -11,7 +11,6 @@ Player::Player(const uint8_t pin, const float loadOhms) :
 
 void Player::begin()
 {
-    EMAVDivSampler::begin();
     resetJoules();
 }
 
@@ -39,6 +38,7 @@ float Player::lastWatts()
 
 void Player::resetJoules()
 {
+    EMAVDivSampler::begin();
     _joules = 0.;
     _frozen = false;
     _lastUpdated = Millis();
