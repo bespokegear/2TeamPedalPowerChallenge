@@ -1,11 +1,19 @@
 # Two Team Pedal Power Challenge Firmware
 
+## Important note about memory usage
+
+This sketch is VERY tight on SRAM.  When using two panels per display, there will not be
+enough memory to run reliably unless the system serial buffer size is reduced.  To do this
+is automatic when building using the Makefile method, but when building using the Arduino IDE
+it is vital that you use version 1.7.9 or later so the buildprefs.txt file is used.
+
 ## Pre-requisites
 
-* Install the Arduino IDE 1.6.6 or later
+* Install the Arduino IDE 1.7.9 or later
 ** Windows & Mac users may find a download link here: https://www.arduino.cc/en/Main/Software
 ** Major Linux distros carry it in their software repositories, or the link above may be used
 ** Install ''Mutila'' library, link: https://github.com/matthewg42/Mutila 
+** Install the ''Adafruit_NeoPixel'' library, link: https://github.com/adafruit/Adafruit_NeoPixel
 
 ## Building Using the Arduino IDE
 

@@ -1,0 +1,1 @@
+build.extra_flags = -DSERIAL_TX_BUFFER_SIZE=8 -DSERIAL_RX_BUFFER_SIZE=8

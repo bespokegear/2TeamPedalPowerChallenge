@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <EEPROM.h>
 #include <Mutila.h>
 #include <MutilaDebug.h>
 #include <Adafruit_NeoPixel.h>
