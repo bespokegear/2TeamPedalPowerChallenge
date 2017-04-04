@@ -9,6 +9,7 @@ public:
     void modeStart();
     void modeStop();
     void modeUpdate();
+    void announce();
 
 };
 

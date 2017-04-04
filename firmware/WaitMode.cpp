@@ -1,12 +1,10 @@
 #include <MutilaDebug.h>
 #include <Millis.h>
 #include "WaitMode.h"
-#include "Display.h"
 #include "SWRed.h"
 #include "Config.h"
 #include "LED1.h"
 #include "LED2.h"
-#include "Display.h"
 
 WaitMode_ WaitMode;
 
@@ -24,7 +22,6 @@ void WaitMode_::modeStart()
     DBLN(F("WaitMode::start()"));
     wipeRow = LED1.numRows();
     lastWipe = Millis();
-    Display.say("Energy Mode");
 }
 
 void WaitMode_::modeStop()

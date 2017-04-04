@@ -7,6 +7,7 @@
 #include "SWRed.h"
 #include "SWGreen.h"
 #include "MemDebug.h"
+#include "Display.h"
 
 TimedPowerMode_ TimedPowerMode;
 
@@ -28,6 +29,7 @@ void TimedPowerMode_::modeStart()
     DBLN(F("TimedPowerMode::start()"));
     // we start waiting for a button to press
     switchMode(&WaitMode);
+    announce();
 }
 
 void TimedPowerMode_::modeStop()
@@ -47,10 +49,15 @@ void TimedPowerMode_::modeUpdate()
             switchMode(&TimedPowerVictoryMode);
         } else {
             switchMode(&WaitMode);
+            announce();
         }
     } else {
         mode->update();
     }
 }
 
+void TimedPowerMode_::announce()
+{
+    Display.say("Power Race");
+}
 

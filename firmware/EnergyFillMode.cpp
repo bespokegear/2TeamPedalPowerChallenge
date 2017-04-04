@@ -7,6 +7,7 @@
 #include "SWRed.h"
 #include "SWGreen.h"
 #include "MemDebug.h"
+#include "Display.h"
 
 EnergyFillMode_ EnergyFillMode;
 
@@ -28,6 +29,7 @@ void EnergyFillMode_::modeStart()
     DBLN(F("EnergyFillMode::start()"));
     // we start waiting for a button to press
     switchMode(&WaitMode);
+    announce();
 }
 
 void EnergyFillMode_::modeStop()
@@ -47,10 +49,16 @@ void EnergyFillMode_::modeUpdate()
             switchMode(&EnergyFillVictoryMode);
         } else {
             switchMode(&WaitMode);
+            announce();
         }
     } else {
         mode->update();
     }
+}
+
+void EnergyFillMode_::announce()
+{
+    Display.say("Energy Fill");
 }
 
 

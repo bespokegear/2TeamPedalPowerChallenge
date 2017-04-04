@@ -7,6 +7,7 @@
 #include "SWRed.h"
 #include "SWGreen.h"
 #include "MemDebug.h"
+#include "Display.h"
 
 TimedEnergyMode_ TimedEnergyMode;
 
@@ -28,6 +29,7 @@ void TimedEnergyMode_::modeStart()
     DBLN(F("TimedEnergyMode::start()"));
     // we start waiting for a button to press
     switchMode(&WaitMode);
+    announce();
 }
 
 void TimedEnergyMode_::modeStop()
@@ -47,10 +49,15 @@ void TimedEnergyMode_::modeUpdate()
             switchMode(&TimedEnergyVictoryMode);
         } else {
             switchMode(&WaitMode);
+            announce();
         }
     } else {
         mode->update();
     }
 }
 
+void TimedEnergyMode_::announce()
+{
+    Display.say("Energy Race");
+}
 
