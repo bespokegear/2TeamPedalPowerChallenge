@@ -67,7 +67,7 @@ uint32_t RIBargraphDisplay::getRowColor(uint16_t row)
 
 void RIBargraphDisplay::graph(float percent, uint32_t barColor, bool peak, uint32_t peakColor)
 {
-    uint16_t topLit = 0;
+    int16_t topLit = -1;
     for (uint16_t i=0; i<numRows(); i++) {
         bool lit = percent >= (float)(i+1)/numRows();
         if (lit) {
