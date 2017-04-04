@@ -80,7 +80,7 @@ public:
 private:
     neoPixelType _type; 
     uint8_t _pin;
-    uint16_t peakRow;
+    int16_t peakRow;
 
 };
 
