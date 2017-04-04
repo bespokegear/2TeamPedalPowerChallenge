@@ -1,6 +1,6 @@
 #include <MutilaDebug.h>
 #include <Millis.h>
-#include "EnergyFillWaitMode.h"
+#include "WaitMode.h"
 #include "Display.h"
 #include "SWRed.h"
 #include "Config.h"
@@ -8,33 +8,33 @@
 #include "LED2.h"
 #include "Display.h"
 
-EnergyFillWaitMode_ EnergyFillWaitMode;
+WaitMode_ WaitMode;
 
-EnergyFillWaitMode_::EnergyFillWaitMode_() 
+WaitMode_::WaitMode_() 
 {
 }
 
-void EnergyFillWaitMode_::begin()
+void WaitMode_::begin()
 {
-    DBLN(F("EnergyFillWaitMode::begin()"));
+    DBLN(F("WaitMode::begin()"));
 }
 
-void EnergyFillWaitMode_::modeStart()
+void WaitMode_::modeStart()
 {
-    DBLN(F("EnergyFillWaitMode::start()"));
+    DBLN(F("WaitMode::start()"));
     wipeRow = LED1.numRows();
     lastWipe = Millis();
     Display.say("Energy Mode");
 }
 
-void EnergyFillWaitMode_::modeStop()
+void WaitMode_::modeStop()
 {
-    DBLN(F("EnergyFillWaitMode::stop()"));
+    DBLN(F("WaitMode::stop()"));
     LED1.setBrightness(255);
     LED2.setBrightness(255);
 }
 
-void EnergyFillWaitMode_::modeUpdate()
+void WaitMode_::modeUpdate()
 {
     if (Millis() >= lastWipe + 35 && wipeRow >= 0) {
         LED1.setRowColor(wipeRow, 0, true);
@@ -44,7 +44,7 @@ void EnergyFillWaitMode_::modeUpdate()
     }
 }
 
-bool EnergyFillWaitMode_::isFinished()
+bool WaitMode_::isFinished()
 {
     return SWRed.tapped();
 }

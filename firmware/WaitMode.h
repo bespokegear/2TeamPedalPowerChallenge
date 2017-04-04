@@ -3,9 +3,9 @@
 #include <Mode.h>
 #include <stdint.h>
 
-class EnergyFillWaitMode_ : public Mode {
+class WaitMode_ : public Mode {
 public:
-    EnergyFillWaitMode_();
+    WaitMode_();
     void begin();
     void modeStart();
     void modeStop();
@@ -18,4 +18,4 @@ private:
 
 };
 
-extern EnergyFillWaitMode_ EnergyFillWaitMode;
+extern WaitMode_ WaitMode;

@@ -1,6 +1,6 @@
 #include <MutilaDebug.h>
 #include "TimedEnergyMode.h"
-#include "TimedEnergyWaitMode.h"
+#include "WaitMode.h"
 #include "CountdownMode.h"
 #include "TimedEnergyRaceMode.h"
 #include "TimedEnergyVictoryMode.h"
@@ -17,7 +17,7 @@ TimedEnergyMode_::TimedEnergyMode_()
 void TimedEnergyMode_::begin()
 {
     DBLN(F("TimedEnergyMode::begin()"));
-    TimedEnergyWaitMode.begin();
+    WaitMode.begin();
     CountdownMode.begin();
     TimedEnergyRaceMode.begin();
     TimedEnergyVictoryMode.begin();
@@ -27,7 +27,7 @@ void TimedEnergyMode_::modeStart()
 {
     DBLN(F("TimedEnergyMode::start()"));
     // we start waiting for a button to press
-    switchMode(&TimedEnergyWaitMode);
+    switchMode(&WaitMode);
 }
 
 void TimedEnergyMode_::modeStop()
@@ -39,14 +39,14 @@ void TimedEnergyMode_::modeUpdate()
 {
     MEMDB();
     if (mode->isFinished()) {
-        if (mode == &TimedEnergyWaitMode) {
+        if (mode == &WaitMode) {
             switchMode(&CountdownMode);
         } else if (mode == &CountdownMode) {
             switchMode(&TimedEnergyRaceMode);
         } else if (mode == &TimedEnergyRaceMode) {
             switchMode(&TimedEnergyVictoryMode);
         } else {
-            switchMode(&TimedEnergyWaitMode);
+            switchMode(&WaitMode);
         }
     } else {
         mode->update();
