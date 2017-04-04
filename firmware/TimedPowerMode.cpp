@@ -1,7 +1,7 @@
 #include <MutilaDebug.h>
 #include "TimedPowerMode.h"
 #include "TimedPowerWaitMode.h"
-#include "TimedPowerCountdownMode.h"
+#include "CountdownMode.h"
 #include "TimedPowerRaceMode.h"
 #include "TimedPowerVictoryMode.h"
 #include "SWRed.h"
@@ -18,7 +18,7 @@ void TimedPowerMode_::begin()
 {
     DBLN(F("TimedPowerMode::begin()"));
     TimedPowerWaitMode.begin();
-    TimedPowerCountdownMode.begin();
+    CountdownMode.begin();
     TimedPowerRaceMode.begin();
     TimedPowerVictoryMode.begin();
 }
@@ -40,8 +40,8 @@ void TimedPowerMode_::modeUpdate()
     MEMDB();
     if (mode->isFinished()) {
         if (mode == &TimedPowerWaitMode) {
-            switchMode(&TimedPowerCountdownMode);
-        } else if (mode == &TimedPowerCountdownMode) {
+            switchMode(&CountdownMode);
+        } else if (mode == &CountdownMode) {
             switchMode(&TimedPowerRaceMode);
         } else if (mode == &TimedPowerRaceMode) {
             switchMode(&TimedPowerVictoryMode);
