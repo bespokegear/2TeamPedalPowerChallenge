@@ -62,7 +62,7 @@ void Display_::timer(uint16_t tenthsSec)
     DB(F("DISPLAY [timer]: "));
     DBLN(tenthsSec);
     clearBuf();
-    snprintf(buf, 12, "aAAT%04d", tenthsSec);
+    snprintf(buf, 12, "aAATI%04d", tenthsSec);
     sendBuf(12, '-');
 }
 
