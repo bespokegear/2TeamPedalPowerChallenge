@@ -73,23 +73,23 @@ void SettingsMode_::display()
     memset(buf,0,13);
     switch(_idx) {
     case 0:
-        snprintf(buf, 12, "MaxE=%dkJ", EnergyRaceGoalJoules.get()/1000);
+        snprintf(buf, 12, "MaxE|%dkJ", EnergyRaceGoalJoules.get()/1000);
         Display.say(buf);
         break;
     case 1:
-        snprintf(buf, 12, "MaxP=%dW", MaxPowerWatts.get());
+        snprintf(buf, 12, "MaxP|%dW", MaxPowerWatts.get());
         Display.say(buf);
         break;
     case 2:
-        snprintf(buf, 12, "Race T=%ds", RaceTimeSeconds.get());
+        snprintf(buf, 12, "Race T|%ds", RaceTimeSeconds.get());
         Display.say(buf);
         break;
     case 3:
-        snprintf(buf, 12, "Panels=%d", PanelsPerBargraph.get());
+        snprintf(buf, 12, "Panels|%d", PanelsPerBargraph.get());
         Display.say(buf);
         break;
     default:
-        Display.say("Error");
+        Display.say("Err");
         break;
     }
 }
