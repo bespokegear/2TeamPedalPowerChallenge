@@ -1,0 +1,7 @@
+<map id="AbstractDebouncedButton" name="AbstractDebouncedButton">
+<area shape="rect" id="node1" title=" " alt="" coords="211,160,440,545"/>
+<area shape="rect" id="node3" href="$classDebouncedAnalogButton.html" title="Timeslice&#45;based button with debouncing using analogRead." alt="" coords="5,601,213,722"/>
+<area shape="rect" id="node4" href="$classDebouncedButton.html" title=" " alt="" coords="238,593,413,729"/>
+<area shape="rect" id="node5" href="$classDebouncedDualButton.html" title=" " alt="" coords="437,601,630,722"/>
+<area shape="rect" id="node2" href="$classAbstractButton.html" title=" " alt="" coords="253,5,397,112"/>
+</map>

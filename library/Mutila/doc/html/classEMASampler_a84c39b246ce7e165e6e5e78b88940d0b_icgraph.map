@@ -1,0 +1,6 @@
+<map id="EMASampler::average" name="EMASampler::average">
+<area shape="rect" id="node1" title=" " alt="" coords="500,42,665,69"/>
+<area shape="rect" id="node2" href="$classEMACurrentSampler.html#a98f93f9823f380f5300f1a8c823d2b03" title="Get the mean value in the sample set." alt="" coords="259,5,419,47"/>
+<area shape="rect" id="node3" href="$classEMAVDivSampler.html#a8ddf2a68a05dc8f05b3777d4a0aa158c" title="Get the mean value in the sample set." alt="" coords="225,71,452,98"/>
+<area shape="rect" id="node4" href="$classBrownoutMode.html#a3a0cefabe6f2b88c707e939a7e7affe5" title=" " alt="" coords="5,71,177,98"/>
+</map>

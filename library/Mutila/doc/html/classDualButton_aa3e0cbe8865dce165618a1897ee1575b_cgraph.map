@@ -1,0 +1,6 @@
+<map id="DualButton::update" name="DualButton::update">
+<area shape="rect" id="node1" title=" " alt="" coords="5,35,153,61"/>
+<area shape="rect" id="node2" href="$classDebouncedButton.html#a6df550e3af8195ab8374c86660abe6ae" title=" " alt="" coords="201,35,392,61"/>
+<area shape="rect" id="node3" href="$classDigitalInputButton.html#a502de66816d4f2116b834ce505cf7c31" title=" " alt="" coords="453,5,619,32"/>
+<area shape="rect" id="node4" href="$classAbstractDebouncedButton.html#a865fdf4b67386c90b53d33906a22bc6d" title=" " alt="" coords="440,57,632,98"/>
+</map>

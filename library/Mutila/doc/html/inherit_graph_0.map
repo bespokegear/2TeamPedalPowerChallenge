@@ -1,0 +1,10 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classAbstractButton.html" title=" " alt="" coords="5,81,124,108"/>
+<area shape="rect" id="node2" href="$classAbstractDebouncedButton.html" title=" " alt="" coords="172,56,364,83"/>
+<area shape="rect" id="node6" href="$classAnalogInputButton.html" title=" " alt="" coords="197,5,339,32"/>
+<area shape="rect" id="node7" href="$classDigitalInputButton.html" title=" " alt="" coords="197,107,339,133"/>
+<area shape="rect" id="node8" href="$classDualInputButton.html" title=" " alt="" coords="204,157,332,184"/>
+<area shape="rect" id="node3" href="$classDebouncedAnalogButton.html" title="Timeslice&#45;based button with debouncing using analogRead." alt="" coords="412,19,595,45"/>
+<area shape="rect" id="node4" href="$classDebouncedButton.html" title=" " alt="" coords="434,81,573,108"/>
+<area shape="rect" id="node5" href="$classDebouncedDualButton.html" title=" " alt="" coords="419,144,587,171"/>
+</map>

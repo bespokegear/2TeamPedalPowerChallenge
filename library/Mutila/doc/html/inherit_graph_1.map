@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classAbstractSampler.html" title="Base class for analog pin sampling classes." alt="" coords="5,31,136,57"/>
+<area shape="rect" id="node2" href="$classBufferedSampler.html" title="Ringbuffer&#45;based sampler for analog values." alt="" coords="184,5,316,32"/>
+<area shape="rect" id="node4" href="$classEMASampler.html" title="Exponential Moving Average (EMA) analog pin sampler." alt="" coords="198,56,302,83"/>
+<area shape="rect" id="node3" href="$classBufferedVDivSampler.html" title="Buffered voltage divider based voltage sampler." alt="" coords="364,5,527,32"/>
+<area shape="rect" id="node5" href="$classEMACurrentSampler.html" title="Exponential Moving Average current sampler." alt="" coords="369,56,521,83"/>
+<area shape="rect" id="node6" href="$classEMAVDivSampler.html" title="Exponential Moving Average Voltage Divider based voltage sampler." alt="" coords="378,107,513,133"/>
+</map>

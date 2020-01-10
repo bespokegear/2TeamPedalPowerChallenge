@@ -1,0 +1,8 @@
+#!/bin/sh
+
+rm -rf doc/html
+doxygen || exit
+
+if [ "$1" != "no" ]; then
+    rsync -av --delete-after doc/html/ ~/project/GithubPages/Mutila/
+fi

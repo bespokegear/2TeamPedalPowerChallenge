@@ -1,0 +1,8 @@
+<map id="AbstractSampler" name="AbstractSampler">
+<area shape="rect" id="node1" title="Base class for analog pin sampling classes." alt="" coords="120,5,287,185"/>
+<area shape="rect" id="node2" href="$classBufferedSampler.html" title="Ringbuffer&#45;based sampler for analog values." alt="" coords="29,233,197,560"/>
+<area shape="rect" id="node4" href="$classEMASampler.html" title="Exponential Moving Average (EMA) analog pin sampler." alt="" coords="233,299,379,494"/>
+<area shape="rect" id="node3" href="$classBufferedVDivSampler.html" title="Buffered voltage divider based voltage sampler." alt="" coords="5,608,193,744"/>
+<area shape="rect" id="node5" href="$classEMACurrentSampler.html" title="Exponential Moving Average current sampler." alt="" coords="217,608,395,744"/>
+<area shape="rect" id="node6" href="$classEMAVDivSampler.html" title="Exponential Moving Average Voltage Divider based voltage sampler." alt="" coords="419,608,579,744"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="DualInputButton" name="DualInputButton">
+<area shape="rect" id="node1" title=" " alt="" coords="25,160,179,296"/>
+<area shape="rect" id="node3" href="$classDebouncedDualButton.html" title=" " alt="" coords="5,344,199,465"/>
+<area shape="rect" id="node2" href="$classAbstractButton.html" title=" " alt="" coords="30,5,174,112"/>
+</map>

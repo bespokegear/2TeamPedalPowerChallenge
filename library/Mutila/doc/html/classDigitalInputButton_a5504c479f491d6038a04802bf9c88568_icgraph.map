@@ -1,0 +1,7 @@
+<map id="DigitalInputButton::begin" name="DigitalInputButton::begin">
+<area shape="rect" id="node1" title=" " alt="" coords="465,49,607,90"/>
+<area shape="rect" id="node2" href="$classDebouncedButton.html#a15b47d7ece1c6fc74176ade0b05ffb21" title=" " alt="" coords="235,56,417,83"/>
+<area shape="rect" id="node3" href="$classDualButton.html#a49a64babf3df5b63de40abe847a2586a" title=" " alt="" coords="27,5,165,32"/>
+<area shape="rect" id="node4" href="$classMultiThrowSwitch.html#a60820394b70b9af0f666f37beba7ac68" title=" " alt="" coords="5,56,187,83"/>
+<area shape="rect" id="node5" href="$classToggleButton.html#a80b717861bf854f2192c5a333fb93ef2" title=" " alt="" coords="21,107,171,133"/>
+</map>

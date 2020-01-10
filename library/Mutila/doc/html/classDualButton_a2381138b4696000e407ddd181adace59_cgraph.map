@@ -1,0 +1,5 @@
+<map id="DualButton::held" name="DualButton::held">
+<area shape="rect" id="node1" title=" " alt="" coords="5,13,136,39"/>
+<area shape="rect" id="node2" href="$classAbstractDebouncedButton.html#ad6425bc0edce537961eed777fef30618" title=" " alt="" coords="184,5,376,47"/>
+<area shape="rect" id="node3" href="$classAbstractButton.html#a183f04ee1764bac387c74bf6e13446b1" title=" " alt="" coords="424,13,567,39"/>
+</map>

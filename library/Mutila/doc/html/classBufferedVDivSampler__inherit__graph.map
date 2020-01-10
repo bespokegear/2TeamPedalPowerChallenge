@@ -1,0 +1,5 @@
+<map id="BufferedVDivSampler" name="BufferedVDivSampler">
+<area shape="rect" id="node1" title="Buffered voltage divider based voltage sampler." alt="" coords="5,608,193,744"/>
+<area shape="rect" id="node2" href="$classBufferedSampler.html" title="Ringbuffer&#45;based sampler for analog values." alt="" coords="15,233,183,560"/>
+<area shape="rect" id="node3" href="$classAbstractSampler.html" title="Base class for analog pin sampling classes." alt="" coords="16,5,183,185"/>
+</map>

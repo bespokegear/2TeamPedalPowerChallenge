@@ -15,7 +15,7 @@ If you do not do this, the sketch may behave poorly - crashing after some runtim
 * Install the Arduino IDE 1.6.6 or later
 * Windows & Mac users may find a download link here: https://www.arduino.cc/en/Main/Software
 * Major Linux distros carry it in their software repositories, or the link above may be used
-* Install ''Mutila'' library, link: https://github.com/matthewg42/Mutila 
+* Install ''Mutila'' library from the library folder in this project to your Arduino library folder
 * Install the ''Adafruit_NeoPixel'' library, link: https://github.com/adafruit/Adafruit_NeoPixel
 
 ## Building Using the Arduino IDE
