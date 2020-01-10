@@ -30,9 +30,9 @@
 #define PLAYER_ADULT_LOAD_OHM       4.4
 #define PLAYER_CHILD_LOAD_OHM       6.6
 
-#define TEAM1_ADULT_PIN             A0
+#define TEAM1_ADULT_PIN             A2
 #define TEAM1_CHILD_PIN             A1
-#define TEAM2_ADULT_PIN             A2
+#define TEAM2_ADULT_PIN             A0
 #define TEAM2_CHILD_PIN             A3
 
 #define COUNTDOWN_START             3
