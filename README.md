@@ -36,3 +36,19 @@ This alternative build system may also be used. It is an alternative to using th
 * Edit the arduino.mk file and set the include line to point at where you installed Arduino-Makefile (or set the ARDUINO_MAKEFILE environment variable)
 * In a shell, from the ''firmware'' directory, use the command "make upload" to build and install the code
 
+## Updates
+
+This has been altered to work with the new version of the energy bike.
+
+This uses an ultra capacitor to store the energy and display the LEDs when there is no mains power available.
+
+New features to implement include:
+
+* Monitor capacitor voltage
+* Change display mode if capacitor voltage drops
+* If capacitor voltage drops < 12V DC then
+** Reduce brightness of LEDs (both strings)
+** After 30 seconds of lower than 12V DC switch OFF LEDs
+* Change pins for new wiring
+* Config change for new version
+
