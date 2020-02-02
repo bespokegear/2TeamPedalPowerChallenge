@@ -2,7 +2,7 @@
 #include <Millis.h>
 #include "TimedPowerRaceMode.h"
 #include "Display.h"
-#include "SWRed.h"
+#include "SWGreen.h"
 #include "Config.h"
 #include "Team1.h"
 #include "Team2.h"
@@ -50,7 +50,7 @@ void TimedPowerRaceMode_::modeUpdate()
 
 bool TimedPowerRaceMode_::isFinished()
 {
-    return SWRed.tapped() || Millis() > raceStart + (1000*RaceTimeSeconds.get());
+    return SWGreen.tapped() || Millis() > raceStart + (1000*RaceTimeSeconds.get());
 }
 
 void TimedPowerRaceMode_::updateCounter()
@@ -77,4 +77,3 @@ void TimedPowerRaceMode_::plot(float p1, float p2) {
     LED1.graph(p1, TIMED_POWER_TEAM1_COLOR, true, TIMED_POWER_TEAM1_PEAKCOLOR);
     LED2.graph(p2, TIMED_POWER_TEAM2_COLOR, true, TIMED_POWER_TEAM2_PEAKCOLOR);
 }
-
