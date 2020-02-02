@@ -2,7 +2,7 @@
 #include <Millis.h>
 #include "EnergyFillRaceMode.h"
 #include "Display.h"
-#include "SWRed.h"
+#include "SWGreen.h"
 #include "Config.h"
 #include "Team1.h"
 #include "Team2.h"
@@ -43,7 +43,7 @@ void EnergyFillRaceMode_::modeStop()
 
 void EnergyFillRaceMode_::modeUpdate()
 {
-    if (SWRed.tapped()) {
+    if (SWGreen.tapped()) {
         raceOver = true;
     }
 
@@ -114,4 +114,3 @@ void EnergyFillRaceMode_::updateLEDs()
     LED1.graph(t1Complete, getColor(t1Complete), false);
     LED2.graph(t2Complete, getColor(t2Complete), false);
 }
-

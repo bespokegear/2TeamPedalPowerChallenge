@@ -3,7 +3,7 @@
 #include <Millis.h>
 #include "TimedEnergyVictoryMode.h"
 #include "Display.h"
-#include "SWRed.h"
+#include "SWGreen.h"
 #include "Config.h"
 #include "Team1.h"
 #include "Team2.h"
@@ -64,7 +64,7 @@ void TimedEnergyVictoryMode_::modeUpdate()
 
 bool TimedEnergyVictoryMode_::isFinished()
 {
-    return SWRed.tapped();
+    return SWGreen.tapped();
 }
 
 void TimedEnergyVictoryMode_::throb(RIBargraphDisplay* led)
@@ -84,4 +84,3 @@ void TimedEnergyVictoryMode_::fade(RIBargraphDisplay* led)
     dim += 0.15;
     led->setBrightness(dim*255);
 }
-

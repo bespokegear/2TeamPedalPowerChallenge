@@ -1,7 +1,7 @@
 #include <MutilaDebug.h>
 #include <Millis.h>
 #include "WaitMode.h"
-#include "SWRed.h"
+#include "SWGreen.h"
 #include "Config.h"
 #include "LED1.h"
 #include "LED2.h"
@@ -43,6 +43,5 @@ void WaitMode_::modeUpdate()
 
 bool WaitMode_::isFinished()
 {
-    return SWRed.tapped();
+    return SWGreen.tapped();
 }
-

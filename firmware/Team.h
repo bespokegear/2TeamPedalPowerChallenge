@@ -6,7 +6,10 @@
 
 class Team {
 public:
-    Team(uint8_t adultPin, float childPin);
+
+    //Team(uint8_t adultPin, float childPin);
+    // removed child pin
+    Team(uint8_t adultPin);
     void begin();
     void update();
 
@@ -25,8 +28,7 @@ public:
 
 private:
     Player _adultPlayer;
-    Player _childPlayer;
+    //Player _childPlayer;
     float _maxWatts;
 
 };
-
