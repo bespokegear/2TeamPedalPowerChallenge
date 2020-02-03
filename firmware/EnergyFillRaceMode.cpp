@@ -43,6 +43,7 @@ void EnergyFillRaceMode_::modeStop()
 
 void EnergyFillRaceMode_::modeUpdate()
 {
+
     if (SWGreen.tapped()) {
         raceOver = true;
     }

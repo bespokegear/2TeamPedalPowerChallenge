@@ -59,6 +59,8 @@
 
 #define COUNTER_ONSET_DELAY_MS      1000
 
-#define ENTER_SETTINGS_DELAY_MS     3000  // 3 seconds hold SWRed and SWGreen to enter setings mode.
+//#define ENTER_SETTINGS_DELAY_MS     3000  // 3 seconds hold SWRed and SWGreen to enter setings mode.
+
+#define LED_TIMER_DELAY_MS          10000 // Timer - how long to hold the LEDs on after voltage dropped OR victroy display
 
 #define START_MODE                  0     // Energy Fill
