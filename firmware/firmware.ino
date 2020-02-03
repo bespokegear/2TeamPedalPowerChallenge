@@ -122,10 +122,10 @@ void loop()
   mode->update();
 
   modeCheck();
-  // Set the mode based on the position of SWA and SWB
+  // Set the mode based on the press of SWA
   // This sets modeIdx
-
   return;
+  
   DB(F("SWARG:"));
   DB(SWA.on());
   // DB(SWB.on());

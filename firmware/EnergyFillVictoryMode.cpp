@@ -64,6 +64,7 @@ void EnergyFillVictoryMode_::modeUpdate()
 
 bool EnergyFillVictoryMode_::isFinished()
 {
+    // Need to solve this so a timer will also finish the mode....
     return SWGreen.tapped();
 }
 
