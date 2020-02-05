@@ -53,7 +53,15 @@ void EnergyFillRaceMode_::modeUpdate()
         raceOver = true;
     }
 
+
     updateLEDs();
+    if(Team1.watts()<=1 && Team2.watts()<=1)
+    {
+      // Here want to blank the LEDs
+      //RIBargraphDisplay::clear(true);
+      Serial.println("LOW");
+    }
+    
 }
 
 bool EnergyFillRaceMode_::isFinished()

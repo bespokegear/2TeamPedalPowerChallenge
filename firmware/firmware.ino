@@ -24,9 +24,6 @@
 
 int8_t modeIdx = -1;
 
-// want to put this section in persistant settings?
-uint8_t idx = START_MODE;   // Sets the starting mode
-
 Mode* modes[] = { &EnergyFillMode, &TimedPowerMode, &TimedEnergyMode, &SettingsMode };
 Mode* mode = NULL;
 
@@ -61,14 +58,11 @@ void modeCheck()
   if(SWA.tapped()) {
     // Want to go to change the mode here:
     // Scroll through the list
-    idx = idx+1;
-    if(idx >= SETTINGS_COUNT)
-    {
-      idx=0;  // Reset the idx
-    }      
+    InitialMode.increment();
   }
-  if (idx != modeIdx) {
-    modeIdx = idx;
+  if (InitialMode.get() != modeIdx) {
+    modeIdx = InitialMode.get();
+    InitialMode.save();
     DB(F("Switch mode IDX="));
     DBLN(modeIdx);
     switchMode(modes[modeIdx]);

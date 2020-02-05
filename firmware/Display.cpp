@@ -52,7 +52,7 @@ void Display_::say(const char* str)
     DBLN(str);
     snprintf(buf, DISPLAY_BUF_LEN-1, "aAAST%s", str);
     clearBuf();
-    delay(50);
+    delay(100);
     snprintf(buf, DISPLAY_BUF_LEN-1, "aAAST%s", str);
     sendBuf(17, '#');
 }
@@ -71,7 +71,7 @@ void Display_::winner(uint8_t n)
     DB(F("DISPLAY [winner]: "));
     DBLN(n);
     clearBuf();
+    delay(50);    // Added to stop overwrite on serial
     snprintf(buf, 12, "aAAWN%d", n);
     sendBuf(12, '-');
 }
-
