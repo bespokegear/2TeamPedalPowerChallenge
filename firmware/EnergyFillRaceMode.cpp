@@ -133,6 +133,11 @@ void EnergyFillRaceMode_::updateLEDs()
     DB(F(" elapsed="));
     DBLN((Millis()-raceStart)/1000);
   */
-  LED1.graph(t1Complete, getColor(t1Complete), false);
-  LED2.graph(t2Complete, getColor(t2Complete), false);
+
+  // These lines show colours from blue to red - not used here
+//  LED1.graph(t1Complete, getColor(t1Complete), false);
+//  LED2.graph(t2Complete, getColor(t2Complete), false);
+  LED1.graph(t1Complete, TIMED_POWER_TEAM1_COLOR, false);
+  LED2.graph(t2Complete, TIMED_POWER_TEAM2_COLOR, false);
+
 }
