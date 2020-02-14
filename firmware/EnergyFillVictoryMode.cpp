@@ -60,11 +60,12 @@ void EnergyFillVictoryMode_::modeUpdate()
         throb(&LED1);
         throb(&LED2);
     }
+    // Here want to shutdown the LEDs if been longer than a certain time.
+    // If timer > max time then victorymode is finished....
 }
 
 bool EnergyFillVictoryMode_::isFinished()
 {
-    // Need to solve this so a timer will also finish the mode....
     return SWGreen.tapped();
 }
 

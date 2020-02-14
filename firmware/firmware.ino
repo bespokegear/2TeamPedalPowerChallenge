@@ -27,9 +27,8 @@ int8_t modeIdx = -1;
 Mode* modes[] = { &EnergyFillMode, &TimedPowerMode, &TimedEnergyMode, &SettingsMode };
 Mode* mode = NULL;
 
-// Added these for entering change_mode
-bool       change_mode_flag = false;
-long int   change_mode_timer;
+//// Added these for LED shutdown timer
+//extern long int shutdown_timer = 0;
 
 void switchMode(Mode* newMode)
 {
