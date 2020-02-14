@@ -47,7 +47,7 @@ void Display_::countdown(uint8_t n)
         float cd = float(n)*(1.0/(PanelsPerBargraph.get()*30.0));
         LED1.graph(cd, COUNTDOWN_COLOUR, false);
         LED2.graph(cd, COUNTDOWN_COLOUR, false); 
-        Serial.println(cd);   //debug
+        //Serial.println(cd);   //debug
                
     } else {
         DBLN(F("DISPLAY [countdown]: GO!"));
