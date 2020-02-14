@@ -43,8 +43,30 @@ void TimedEnergyRaceMode_::modeStop()
 
 void TimedEnergyRaceMode_::modeUpdate()
 {
-    updateCounter();
-    updateLEDs();
+  updateCounter();
+  
+  // Timed reset mode.
+  // Need to have Team1 and Team2 at 0 for a certain length of time (LED_TIMER_DELAY_MS)
+  if (Team1.watts() > 1 || Team2.watts() > 1)
+  {
+    // Reset the timer
+    shutdown_timer = millis();
+  }
+  if ( millis() >= (shutdown_timer + LED_TIMER_DELAY_MS) )
+  {
+    // Only get here is team1 and team2 are zero
+    // reset otherwise...
+    // Here want to blank the LEDs
+    LED1.clear(true);
+    LED2.clear(true);
+    //Serial.println("Blank LEDs"); DEBUG Line
+  }
+  else
+  {
+    updateLEDs();   // Want to move this to only happen if LEDs NOT blanked...
+  }
+  
+
 }
 
 bool TimedEnergyRaceMode_::isFinished()
