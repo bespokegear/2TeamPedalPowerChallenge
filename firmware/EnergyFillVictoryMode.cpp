@@ -10,6 +10,7 @@
 #include "LED1.h"
 #include "LED2.h"
 
+
 EnergyFillVictoryMode_ EnergyFillVictoryMode;
 
 EnergyFillVictoryMode_::EnergyFillVictoryMode_() 
@@ -40,6 +41,7 @@ void EnergyFillVictoryMode_::modeStart()
         winner = 2;
     }
     Display.winner(winner);
+    shutdown_timer = millis();
     setUpdatePeriod(50);
 }
 
@@ -60,13 +62,23 @@ void EnergyFillVictoryMode_::modeUpdate()
         throb(&LED1);
         throb(&LED2);
     }
-    // Here want to shutdown the LEDs if been longer than a certain time.
-    // If timer > max time then victorymode is finished....
 }
 
 bool EnergyFillVictoryMode_::isFinished()
 {
-    return SWGreen.tapped();
+    // Here want to shutdown the LEDs if been longer than a certain time.
+    // If timer > max time then victorymode is finished....
+    if ( millis() >= (shutdown_timer + LED_TIMER_DELAY_MS) )
+    {
+      // Only get here when end of race and timer is over
+      // Here want to fade down the LEDs
+      //Serial.println("time out");
+      return true;
+    } 
+    else
+    {
+      return SWGreen.tapped();
+    }
 }
 
 void EnergyFillVictoryMode_::throb(RIBargraphDisplay* led)

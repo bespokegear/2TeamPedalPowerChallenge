@@ -22,7 +22,7 @@ private:
     uint8_t winner;
     float bright1;
     float bright2;
-    //uint16_t switch_off_timer;
+    unsigned long int shutdown_timer;
 
 };
 

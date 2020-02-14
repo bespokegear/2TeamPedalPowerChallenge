@@ -2,6 +2,9 @@
 #include <MutilaDebug.h>
 #include "Config.h"
 #include "Display.h"
+#include "LED1.h"
+#include "LED2.h"
+#include "Settings.h"
 
 char buf[DISPLAY_BUF_LEN];
 
@@ -38,6 +41,14 @@ void Display_::countdown(uint8_t n)
     if (n>0) {
         DB(F("DISPLAY [countdown]: "));
         DBLN(n);
+        // Also want to display on the LED a 3 2 1 countdown
+        // TO DO
+        // Value is 0-1 from base to fill for LEDs
+        float cd = float(n)*(1.0/(PanelsPerBargraph.get()*30.0));
+        LED1.graph(cd, COUNTDOWN_COLOUR, false);
+        LED2.graph(cd, COUNTDOWN_COLOUR, false); 
+        Serial.println(cd);   //debug
+               
     } else {
         DBLN(F("DISPLAY [countdown]: GO!"));
     }
