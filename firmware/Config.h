@@ -59,5 +59,5 @@
 
 #define COUNTER_ONSET_DELAY_MS      1000
 
-#define LED_TIMER_DELAY_MS          5000            // Timer mS - how long to hold the LEDs on after voltage dropped OR victory display
+#define LED_TIMER_DELAY_MS          30000            // Timer mS - how long to hold the LEDs on after voltage dropped OR victory display
 #define COUNTDOWN_COLOUR            0xFFFFFFFF      // Colour of countdown LEDS
