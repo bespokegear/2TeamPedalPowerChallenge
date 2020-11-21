@@ -18,7 +18,7 @@ private:
     unsigned long raceStart;
     unsigned long nextCounter;
     unsigned long nextLED;
-
+    unsigned long int shutdown_timer;
 };
 
 extern TimedEnergyRaceMode_ TimedEnergyRaceMode;

@@ -16,7 +16,7 @@ public:
 private:
     unsigned long raceStart;
     bool raceOver;
-
+    unsigned long int shutdown_timer;
 };
 
 extern EnergyFillRaceMode_ EnergyFillRaceMode;

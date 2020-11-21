@@ -1,6 +1,4 @@
 #include "DebouncedButton.h"
 #include "Config.h"
 
-DebouncedButton SWA(SWA_PIN);
-
-
+DebouncedButton SWA(SWA_PIN,true);

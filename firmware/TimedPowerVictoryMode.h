@@ -22,7 +22,7 @@ private:
     uint8_t winner;
     float bright1;
     float bright2;
-
+    unsigned long int shutdown_timer;
 };
 
 extern TimedPowerVictoryMode_ TimedPowerVictoryMode;

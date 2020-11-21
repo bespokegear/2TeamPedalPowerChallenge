@@ -21,9 +21,9 @@ void CountdownMode_::begin()
 void CountdownMode_::modeStart()
 {
     DBLN(F("CountdownMode::start()"));
-    setCount(COUNTDOWN_START);
     LED1.clear(true);
     LED2.clear(true);
+    setCount(COUNTDOWN_START);
 }
 
 void CountdownMode_::modeStop()
@@ -54,4 +54,3 @@ bool CountdownMode_::isFinished()
 {
     return count == 0;
 }
-

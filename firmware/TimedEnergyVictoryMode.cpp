@@ -3,7 +3,7 @@
 #include <Millis.h>
 #include "TimedEnergyVictoryMode.h"
 #include "Display.h"
-#include "SWRed.h"
+#include "SWGreen.h"
 #include "Config.h"
 #include "Team1.h"
 #include "Team2.h"
@@ -40,6 +40,7 @@ void TimedEnergyVictoryMode_::modeStart()
         winner = 2;
     }
     Display.winner(winner);
+    shutdown_timer = millis();
     setUpdatePeriod(50);
 }
 
@@ -64,7 +65,19 @@ void TimedEnergyVictoryMode_::modeUpdate()
 
 bool TimedEnergyVictoryMode_::isFinished()
 {
-    return SWRed.tapped();
+    // Here want to shutdown the LEDs if been longer than a certain time.
+    // If timer > max time then victorymode is finished....
+    if ( millis() >= (shutdown_timer + LED_TIMER_DELAY_MS) )
+    {
+      // Only get here when end of race and timer is over
+      // Here want to fade down the LEDs
+      //Serial.println("time out");
+      return true;
+    } 
+    else
+    {
+      return SWGreen.tapped();
+    }
 }
 
 void TimedEnergyVictoryMode_::throb(RIBargraphDisplay* led)
@@ -84,4 +97,3 @@ void TimedEnergyVictoryMode_::fade(RIBargraphDisplay* led)
     dim += 0.15;
     led->setBrightness(dim*255);
 }
-
